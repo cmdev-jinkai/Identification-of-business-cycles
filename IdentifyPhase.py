@@ -1,3 +1,30 @@
+'''
+Name:Identification of cycles with different number of phases
+Author: Jinkai Zhang
+Date: June 23, 2020
+Description:
+    This file provides the functions to identify the business cycles while allowing users to choose the number of total cycles
+    The methods are application to the other time series data in the identification of cycles
+    There are three types of phases identification included which are:
+        Two phases identication: 'Expansion', 'Recession'
+        Four phases identification: "Expansion", "Slowdown","Recession", "Recovery"
+        Six phases identification: "Expansion", "Slowdown","Recession", "Recovery", "DoubleUp", "DoubleDown"
+    
+Logic of the idenfication in Two phases:
+    1. Two phases identification is straightford depending on whether the index above/below mean (e.g. 100 in OECD data)
+    
+Logic of the idenfication in Four phases:
+    1. Identify all the peaks with the mark of '+' and '-' representing up and down peak
+    2. In time series data, if two or more consecutive '+'/'-' peak identified, we choose the most evident peak, allowing up and down peak appears alternatively
+    3. Use the time point of peak and whether it is above mean to determine the position of cycle
+
+Logic of the idenfication in Six phases:
+    1. logis of six phases are based on four phase;
+    2. In point 2 of logic to identify four phase, if two consecutive '+' are observed as peak, the period in these two shall be identified as 'DoubleUp' phase
+    3. Similar application to 'DoubleDown' phase
+    4. adjust the existing months in four phase
+'''
+
 import pandas as pd
 import numpy as np
 import random
@@ -6,11 +33,7 @@ from datetime import datetime
 ALL_CLI = pd.read_csv('OECD.csv')
 OECD_CLI = ALL_CLI[ALL_CLI.LOCATION == 'OECD'][['TIME', 'Value']]
 
-SP_return = pd.read_csv('sp_price.csv')
-
-#first_time = datetime.strptime(df.iloc[0]['TIME'], '%Y-%m')
-#last_time = datetime.strptime(df.iloc[len(df) - 1]['TIME'], '%Y-%m')
-#all_years = last_time.year - first_time.year
+#SP_return = pd.read_csv('sp_price.csv')
 
 
 def Identify_All_Peak (df):
@@ -105,14 +128,53 @@ def Identify_Phase (Number_Phase, df):
                 Output[phase1], Output[phase2] = month1, month2
                 Output[phase3], Output[phase4] = month3, month4
                 return Output
-                
+    elif Number_Phase == 6:
+        Output = Identify_Phase(4, df)
+        phase5, phase6 = "DoubleUp", "DoubleDown"
+        month5, month6 = [], []
+        df_six = Identify_All_Peak(df)
+        df.index = range(len(df))
+        df_six.index = range(len(df_six))
+        for i in range(len(df_six) - 1):
+            if df_six.iloc[i]['Direction'] == df_six.iloc[i+1]['Direction']:
+                begin_month = df_six.iloc[i]['Date']
+                end_month = df_six.iloc[i+1]['Date']
+                begin_index = df[df.TIME == begin_month].index.tolist()[0]
+                end_index = df[df.TIME == end_month].index.tolist()[0]           
+                if df_six.iloc[i]['Direction'] == '+':
+                    for j in range(begin_index + 1, end_index):
+                        month5.append(df.iloc[j]['TIME'])
+                else:
+                    for j in range(begin_index + 1, end_index):
+                        month6.append(df.iloc[j]['TIME'])
+        Output[phase5] = month5
+        Output[phase6] = month6
+        double_month = month5 + month6
+        Output['Expansion'] = np.setdiff1d(Output['Expansion'], double_month).tolist()
+        Output['Slowdown'] = np.setdiff1d(Output['Slowdown'], double_month).tolist()
+        Output['Recession'] = np.setdiff1d(Output['Recession'], double_month).tolist()
+        Output['Recovery'] = np.setdiff1d(Output['Recovery'], double_month).tolist()
+        return Output
+        
+        
+if __name__ == '__main__':
+    """
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~~~ EXAMPLES ~~~~~~~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        
-        
-        
-Cycle = Identify_Phase(4, OECD_CLI)
-Cycle.keys()
-Cycle['Expansion']
+    """
+    TwoPhases_Collection = Identify_Phase(2, OECD_CLI)
+    TwoPhases_Collection.keys()
+    print(TwoPhases_Collection['Expansion'])
+    FourPhases_Collection = Identify_Phase(4, OECD_CLI)
+    FourPhases_Collection.keys()
+    print(FourPhases_Collection['Recovery'])
+    SixPhases_Collection = Identify_Phase(6, OECD_CLI)
+    SixPhases_Collection.keys()
+    print(SixPhases_Collection['DoubleUp'])
 
 
 
