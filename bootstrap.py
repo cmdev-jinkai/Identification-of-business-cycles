@@ -4,17 +4,9 @@ import random
 
 
 
-#just change the working directory and read this data
-#the unit of input and output series return are '%' 
-US_monthly = pd.read_csv('sp.csv')
 
-
-def bootstrap (df, periods_year, method = 'NED', condidence_interval = 95):
-    try:
-        #the list of returns can be sourced from second column 'return'
-        returns = list(df.loc[:, 'return'])
-        periods_month = 12 * periods_year
-        
+def bootstrap (returns, periods_month, method = 'NED', condidence_interval = 95):
+    try:    
         #this function calculated the cumulated LTR based on extracting required number of monthly returns from 100000 numbers according to the time horizon
         def LT_Return (series):
             #sample required number of monthly returns from 100000 returns
@@ -66,20 +58,3 @@ def bootstrap (df, periods_year, method = 'NED', condidence_interval = 95):
             print ('Oops! The method is not included..')
     except:
         print('Oops! Something wrong. May check the column name and try again..')
-
-
-if __name__ == '__main__':
-    """
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    ~~~~~~~~~~~~~~~~~~~~~~~~ EXAMPLES ~~~~~~~~~~~~~~~~~~~~~~~~
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    """
-    print('Predict US 10-year return using bootstrap-NED')
-    result_NED = bootstrap(US_monthly, periods_year = 10, method = 'NED')
-    print(result_NED)
-    print('Predict US 10-year return using bootstrap-FS')
-    result_FS = bootstrap(US_monthly, periods_year = 10, method = 'FS')
-    print(result_FS)
