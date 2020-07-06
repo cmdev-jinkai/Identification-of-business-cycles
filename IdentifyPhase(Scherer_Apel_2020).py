@@ -4,7 +4,7 @@ Author: Jinkai Zhang
 Date: July 6, 2020
 
 Algorithm of Six Phases Identification provided by Jean Ricaume:
-    Reference: https://github.com/ClearMacroIPD/MHF/blob/master/NOWCASTING/MIDASMODEL.py
+    Reference: https://github.com/ClearMacroIPD/MHF/blob/master/MTR/CYCLE/PHASES.py
 
 Description:
     The approach is an enhancement of the economic model developed by Vliet and Blitz (2011) as the methodology is intuitive, robust, and easily applicable.

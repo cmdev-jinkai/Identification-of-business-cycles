@@ -1,5 +1,5 @@
 '''
-Reference: https://github.com/ClearMacroIPD/MHF/blob/master/NOWCASTING/MIDASMODEL.py
+Reference: https://github.com/ClearMacroIPD/MHF/blob/master/MTR/CYCLE/PHASES.py
 '''
 
 import pandas as pd
