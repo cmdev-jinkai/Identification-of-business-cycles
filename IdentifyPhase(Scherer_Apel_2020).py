@@ -15,7 +15,7 @@ Phases Identification:
     4-phases: Method consistent with Scherer and Apel (2020)
     2-phases: An simple extension
     6-phases: Proposed and developed by JR:
-        Reference: https://github.com/ClearMacroIPD/MHF/blob/master/NOWCASTING/MIDASMODEL.py
+        Reference: https://github.com/ClearMacroIPD/MHF/blob/master/MTR/CYCLE/PHASES.py
 
 Single Indicator:
     OECD Component Leading Index(CLI):
