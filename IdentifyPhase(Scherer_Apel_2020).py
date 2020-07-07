@@ -59,10 +59,13 @@ LastDay_NonLeap = {1:31, 2:28, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 
 ALL_CLI = pd.read_csv('Data/OECD.csv')
 OECD_CLI = ALL_CLI[ALL_CLI.LOCATION == 'OECD'][['TIME', 'Value']]
 
-#Phase Identification with MULTIPLE series, see Scherer and Apel (2020) in detail
+#Phase Identification with MULTIPLE series, see Scherer and Apel (2020) in detail FIVE DIMENTION
 CONSSENT = pd.read_csv('Data/CONSSENT.csv') #Consumer sentiment2: University of Michigan Consumer Sentiment Index
 KCFSINDX = pd.read_csv('Data/KCFSINDX.csv') #Financial market stress : Kansas City Financial Stress Index
 #OECD_CLI also included here
+UNEMPLOY = pd.read_csv('Data/UNEMPLOY.csv') #U.S. enemployment rate
+ISMMANU =  pd.read_csv('Data/ISMMANU.csv') #produce sentiment; ISM Manufactory index
+
 
 #Given different data has different date format, these functions are to make them consistent
 
@@ -82,7 +85,45 @@ def Reform_OECD (df):
     except:
         print("This function can be only run once, please reload the data and run it once.")
 
+def Reform_UNEMPLOY (df):
+    try:
+        df.index = range(len(df))
+        for i in range(len(df)):
+            date = datetime.strptime(df['Date'][i], '%m/%d/%Y')
+            year = date.year
+            month = date.month
+            if month < 10:
+                month_str = "0" + str(month)
+            else:
+                month_str = str(month)
+            if year % 4 == 0:
+                df['Date'][i] = str(year) + "-" + month_str + '-' + str(LastDay_Leap[month])
+            else:
+                df['Date'][i] = str(year) + "-" + month_str + '-' + str(LastDay_NonLeap[month])
+        df.columns = ['Date', 'Index']
+        return df   
+    except:
+        print("This function can be only run once, please reload the data and run it once.")
 
+def Reform_ISMMANU (df):
+    try:
+        df.index = range(len(df))
+        for i in range(len(df)):
+            date = datetime.strptime(df['Date'][i], '%m/%d/%Y')
+            year = date.year
+            month = date.month
+            if month < 10:
+                month_str = "0" + str(month)
+            else:
+                month_str = str(month)
+            if year % 4 == 0:
+                df['Date'][i] = str(year) + "-" + month_str + '-' + str(LastDay_Leap[month])
+            else:
+                df['Date'][i] = str(year) + "-" + month_str + '-' + str(LastDay_NonLeap[month])
+        df.columns = ['Date', 'Index']
+        return df   
+    except:
+        print("This function can be only run once, please reload the data and run it once.")
 
 def Reform_CONSSENT (df):
     try:
@@ -175,7 +216,7 @@ def Get_Zscore_Inverse (df, rolling_year = 3):
     return df
 
 
-def Ger_Zscore_Composite (df1, df2, df3):
+def Ger_Zscore_Composite (df1, df2, df3, df4, df5):
     df1.index = df1['Date']
     df1 = df1.drop(['Date', 'Index'], axis = 1)
     df1.columns = ['Z1']
@@ -185,10 +226,16 @@ def Ger_Zscore_Composite (df1, df2, df3):
     df3.index = df3['Date']
     df3 = df3.drop(['Date', 'Index'], axis = 1)
     df3.columns = ['Z3']
-    df = [df1, df2, df3]
+    df4.index = df4['Date']
+    df4 = df4.drop(['Date', 'Index'], axis = 1)
+    df4.columns = ['Z4']
+    df5.index = df5['Date']
+    df5 = df5.drop(['Date', 'Index'], axis = 1)
+    df5.columns = ['Z5']
+    df = [df1, df2, df3, df4, df5]
     df = pd.concat(df, axis = 1)
     df = df.dropna()
-    df['Z_Composite'] = df['Z1']/3 + df['Z2']/3 +df['Z3']/3
+    df['Z_Composite'] = df['Z1']/5 + df['Z2']/5 + df['Z3']/5 + df['Z4']/5 + df['Z5']/5
     df.insert(loc = 0, column='Date', value = df.index)
     return df
 
@@ -237,7 +284,9 @@ def Identify_Phase (df_Single, df_Multiple, Series_Type, Number_Phase):
         OECD_CLI_Zscore = Get_Zscore(OECD_CLI)
         CONSSENT_Zscore = Get_Zscore(CONSSENT)
         KCFSINDX_Zscore = Get_Zscore_Inverse(KCFSINDX)
-        df_Multiple = Ger_Zscore_Composite(OECD_CLI_Zscore, CONSSENT_Zscore, KCFSINDX_Zscore)
+        UNEMPLOY_Zscore = Get_Zscore_Inverse(UNEMPLOY)
+        ISMMANU_Zscore = Get_Zscore(ISMMANU)
+        df_Multiple = Ger_Zscore_Composite(OECD_CLI_Zscore, CONSSENT_Zscore, KCFSINDX_Zscore, UNEMPLOY_Zscore, ISMMANU_Zscore)
         if Number_Phase == 2:
             Phase = []
             for i in range(len(df_Multiple)):
@@ -282,6 +331,8 @@ if __name__ == '__main__':
     OECD_CLI = Reform_OECD(OECD_CLI)
     CONSSENT = Reform_CONSSENT(CONSSENT)
     KCFSINDX = Reform_KCFSINDX(KCFSINDX)
+    UNEMPLOY = Reform_UNEMPLOY(UNEMPLOY)
+    ISMMANU = Reform_ISMMANU(ISMMANU)
     
     #OECD Z_score in SINGLE input framework
     OECD_Single_Zscore = Get_Zscore_NoCap(OECD_CLI)
@@ -291,8 +342,10 @@ if __name__ == '__main__':
     CONSSENT_Zscore = Get_Zscore(CONSSENT)
     #Note: financial stress index below has to be inversed in calculation of signals
     KCFSINDX_Zscore = Get_Zscore_Inverse(KCFSINDX)
+    UNEMPLOY_Zscore = Get_Zscore_Inverse(UNEMPLOY)
+    ISMMANU_Zscore = Get_Zscore(ISMMANU)
     #Composite Zscore: MORE SERIES TO BE ADDED
-    Composite_Zscore = Ger_Zscore_Composite(OECD_CLI_Zscore, CONSSENT_Zscore, KCFSINDX_Zscore)
+    Composite_Zscore = Ger_Zscore_Composite(OECD_CLI_Zscore, CONSSENT_Zscore, KCFSINDX_Zscore, UNEMPLOY_Zscore, ISMMANU_Zscore)
     """
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
