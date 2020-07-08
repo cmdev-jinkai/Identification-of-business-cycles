@@ -11,6 +11,8 @@ Index: U.S S&P 500
 Predicted years: 2 years (this allows users to choose the number of months)
 Note: the prediction is based on the starting point at differnt phases
 
+---ANNULIZED RETURN---
+    
 TWO PHASES IDENTIFICATION:
     Expansion: 4.41%
     Recession: 11.69%
