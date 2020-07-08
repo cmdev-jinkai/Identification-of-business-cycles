@@ -15,8 +15,16 @@ def bootstrap (returns, periods_month, method = 'NED', condidence_interval = 95)
             LTR = list(map(plus_one, LTR))
             #culmulate the monthly return to LTR
             Cumul_Ret = np.prod(LTR) - 1
+            
+            #Transfer from Cumulated return to Anualized return
+            # (1 + Montly_Return) ^ periods_month - 1 = Cumul_Ret    ----(1)
+            Montly_Return = (Cumul_Ret + 1) ** (1 / periods_month) - 1
+            # (1 + Montly_Return) ^ 12 - 1 = Anualized_Return    ----(2)
+            Anualized_Return = (1 + Montly_Return) ** 12 - 1
+            
             #transfer back to the unit of '%'
-            return Cumul_Ret * 100
+            Anualized_Return = Anualized_Return * 100
+            return Anualized_Return
         
         #this function provide the structure of output, to be shown in a dictionary
         def get_output (data):
