@@ -6,7 +6,7 @@ Date: July 10, 2020
 
 Early Ouputs (Annulized Return) using 2-years (24 months) prediction:
 
-Single Inputs (OECD only):
+Single Inputs (OECD only) (1964-2020):
         TWO PHASES IDENTIFICATION:
             Expansion: 5.55%
             Recession: 10.35%
@@ -25,7 +25,7 @@ Single Inputs (OECD only):
             Re_acceleration: 1.34%
             Double_dip: 13.50%
     
-Multiple Inputs (Composite Z-Score method):
+Multiple Inputs (Composite Z-Score method) (1993-2020):
         TWO PHASES IDENTIFICATION:
             Expansion: 9.14%
             Recession: 6.09%
