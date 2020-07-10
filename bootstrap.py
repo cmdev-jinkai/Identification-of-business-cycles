@@ -1,10 +1,7 @@
 '''
-Name:Bootstrap method in estimation of returns 
+Name:Bootstrap method in estimation of returns (Fama and French, 2018)
 Author: Jinkai Zhang
 Date: May 20, 2020
-
-Summary:
-    The method Bootstrap of Bootstraps (BB) is proposed by Fama and French (2018) 
 
 This method provides a new estimation complementary to Averaged Historical Returns Advantages: 
     1) Realized data become less available in long-term; 
