@@ -174,10 +174,10 @@ def Get_Zscore_NoCap (df, rolling_year = 3):
         start_index = i - rolling_month + 1
         end_index = i
         series = df['Index'][start_index : end_index + 1]
-        mean_rolling = series.mean()
+        median_rolling = series.median()
         std_rolling = series.std()
         index_current = df['Index'][i]
-        zscore_current = (index_current - mean_rolling) / std_rolling
+        zscore_current = (index_current - median_rolling) / std_rolling
         zscore.append(zscore_current)
     df['Z_Score'] = zscore
     df = df.dropna()
@@ -193,17 +193,17 @@ def Get_Zscore (df, rolling_year = 3):
         start_index = i - rolling_month + 1
         end_index = i
         series = df['Index'][start_index : end_index + 1]
-        mean_rolling = series.mean()
+        median_rolling = series.median()
         std_rolling = series.std()
         index_current = df['Index'][i]
-        upper_cap, lower_cap = (mean_rolling + 3 * std_rolling), (mean_rolling - 3 * std_rolling)
+        upper_cap, lower_cap = (median_rolling + 3 * std_rolling), (median_rolling - 3 * std_rolling)
         if index_current > upper_cap:
             index_current = upper_cap
         elif index_current < lower_cap:
             index_current = lower_cap
         else:
             pass
-        zscore_current = (index_current - mean_rolling) / std_rolling
+        zscore_current = (index_current - median_rolling) / std_rolling
         zscore.append(zscore_current)
     df['Z_Score'] = zscore
     df = df.dropna()
@@ -239,6 +239,43 @@ def Ger_Zscore_Composite (df1, df2, df3, df4, df5):
     df.insert(loc = 0, column='Date', value = df.index)
     return df
 
+def Limit_Switches_Single (df):
+    for i in range(1, len(df) - 1):
+        if df.iloc[i]['phase'] != df.iloc[i-1]['phase'] and df.iloc[i]['phase'] != df.iloc[i+1]['phase']:
+            if abs(df.iloc[i]['Z_Score'] - df.iloc[i-1]['Z_Score']) >= 1:
+                   df.iloc[i]['phase'] != df.iloc[i-1]['phase']
+            else:
+                pass
+        else:
+            pass
+    j = len(df) - 1
+    if df.iloc[j]['phase'] != df.iloc[j-1]['phase']:
+        if abs(df.iloc[j]['Z_Score'] - df.iloc[j-1]['Z_Score']) >= 1:
+                   df.iloc[j]['phase'] != df.iloc[j-1]['phase']
+        else:
+            pass
+    else:
+        pass
+    return df
+
+def Limit_Switches_Multiple (df):
+    for i in range(1, len(df) - 1):
+        if df.iloc[i]['phase'] != df.iloc[i-1]['phase'] and df.iloc[i]['phase'] != df.iloc[i+1]['phase']:
+            if abs(df.iloc[i]['Z_Composite'] - df.iloc[i-1]['Z_Composite']) >= 1:
+                   df.iloc[i]['phase'] != df.iloc[i-1]['phase']
+            else:
+                pass
+        else:
+            pass
+    j = len(df) - 1
+    if df.iloc[j]['phase'] != df.iloc[j-1]['phase']:
+        if abs(df.iloc[j]['Z_Composite'] - df.iloc[j-1]['Z_Composite']) >= 1:
+                   df.iloc[j]['phase'] != df.iloc[j-1]['phase']
+        else:
+            pass
+    else:
+        pass
+    return df
 
 def Identify_Phase (df_Single, df_Multiple, Series_Type, Number_Phase):   
     if Series_Type == 'Single': #use OECD Z-score
@@ -253,6 +290,8 @@ def Identify_Phase (df_Single, df_Multiple, Series_Type, Number_Phase):
                 else:
                     Phase.append('contraction')
             df_Single['phase'] = Phase
+            df_Single.index = range(len(df_Single))
+            df_Single = Limit_Switches_Single(df_Single)
             return df_Single
         elif Number_Phase == 4:
             Phase = [np.nan]
@@ -269,6 +308,8 @@ def Identify_Phase (df_Single, df_Multiple, Series_Type, Number_Phase):
                     Phase.append('contraction')
             df_Single['phase'] = Phase
             df_Single = df_Single.dropna()
+            df_Single.index = range(len(df_Single))
+            df_Single = Limit_Switches_Single(df_Single)
             return df_Single
         elif Number_Phase == 6:
             # switch the Z_Score to the first column to be consistent with the 6 phase function
@@ -276,6 +317,8 @@ def Identify_Phase (df_Single, df_Multiple, Series_Type, Number_Phase):
             df_Single = get_cycle_phase(df_Single, model = 'MA', window = 8, thresh = 0)
             # swith back
             df_Single['Z_Score'], df_Single['Date'] = df_Single['Date'], df_Single['Z_Score']
+            df_Single.index = range(len(df_Single))
+            df_Single = Limit_Switches_Single(df_Single)
             return df_Single
         else:
             print('The number of phases is not included in the framework')
@@ -296,6 +339,8 @@ def Identify_Phase (df_Single, df_Multiple, Series_Type, Number_Phase):
                 else:
                     Phase.append('contraction')
             df_Multiple['phase'] = Phase
+            df_Multiple.index = range(len(df_Multiple))
+            df_Multiple = Limit_Switches_Multiple(df_Multiple)
             return df_Multiple
         elif Number_Phase == 4:
             Phase = [np.nan]
@@ -312,6 +357,8 @@ def Identify_Phase (df_Single, df_Multiple, Series_Type, Number_Phase):
                     Phase.append('contraction')
             df_Multiple['phase'] = Phase
             df_Multiple = df_Multiple.dropna()
+            df_Multiple.index = range(len(df_Multiple))
+            df_Multiple = Limit_Switches_Multiple(df_Multiple)
             return df_Multiple
         elif Number_Phase == 6:
             # switch the Z_Composite to the first column to be consistent with the 6 phase function
@@ -319,6 +366,8 @@ def Identify_Phase (df_Single, df_Multiple, Series_Type, Number_Phase):
             df_Multiple = get_cycle_phase(df_Multiple, model = 'MA', window = 8, thresh = 0)
             # swith back
             df_Multiple['Z_Composite'], df_Multiple['Date'] = df_Multiple['Date'], df_Multiple['Z_Composite']
+            df_Multiple.index = range(len(df_Multiple))
+            df_Multiple = Limit_Switches_Multiple(df_Multiple)
             return df_Multiple
         else:
             print('The number of phases is not included in the framework') 
@@ -384,9 +433,9 @@ if __name__ == '__main__':
     SingleInput_6Phases.tail(20)
     
     #run it when to get the OECD data since 1993
-    #SingleInput_2Phases = SingleInput_2Phases.iloc[len(SingleInput_2Phases) - 329 : len(SingleInput_2Phases), :]
-    #SingleInput_4Phases = SingleInput_4Phases.iloc[len(SingleInput_4Phases) - 329 : len(SingleInput_4Phases), :]
-    #SingleInput_6Phases = SingleInput_6Phases.iloc[len(SingleInput_6Phases) - 329 : len(SingleInput_6Phases), :]
+    # SingleInput_2Phases = SingleInput_2Phases.iloc[len(SingleInput_2Phases) - 329 : len(SingleInput_2Phases), :]
+    # SingleInput_4Phases = SingleInput_4Phases.iloc[len(SingleInput_4Phases) - 329 : len(SingleInput_4Phases), :]
+    # SingleInput_6Phases = SingleInput_6Phases.iloc[len(SingleInput_6Phases) - 329 : len(SingleInput_6Phases), :]
     
     
     
