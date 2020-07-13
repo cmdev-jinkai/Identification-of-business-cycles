@@ -346,6 +346,27 @@ if __name__ == '__main__':
     ISMMANU_Zscore = Get_Zscore(ISMMANU)
     #Composite Zscore: MORE SERIES TO BE ADDED
     Composite_Zscore = Ger_Zscore_Composite(OECD_CLI_Zscore, CONSSENT_Zscore, KCFSINDX_Zscore, UNEMPLOY_Zscore, ISMMANU_Zscore)
+   
+    '''
+    Correlation Matrix
+    Z1: Economic Growth - OECD CLI Index
+    Z2: Consumer Sentiment - University of Michigan Consumer Sentiment Index 
+    Z3: Financial Stress - Kansas City Financial Stress Index
+    Z4: Unemployment Rate - U.S. unemployment rate;
+    Z5: Producer Sentiment - ISM factor (ISM manufacturers’ survey production index);
+
+    
+    # Composite_Zscore.iloc[:, 1:6].corr()
+    
+              Z1        Z2        Z3        Z4        Z5
+        Z1  1.000000  0.461546  0.375933  0.502463  0.677101
+        Z2  0.461546  1.000000  0.265916  0.632296  0.473199
+        Z3  0.375933  0.265916  1.000000  0.110936  0.458854
+        Z4  0.502463  0.632296  0.110936  1.000000  0.187146
+        Z5  0.677101  0.473199  0.458854  0.187146  1.000000
+    
+    '''
+    
     """
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -361,14 +382,36 @@ if __name__ == '__main__':
     SingleInput_4Phases.tail(20)
     SingleInput_6Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Single', 6)
     SingleInput_6Phases.tail(20)
-
-
+    
+    #run it when to get the OECD data since 1993
+    #SingleInput_2Phases = SingleInput_2Phases.iloc[len(SingleInput_2Phases) - 329 : len(SingleInput_2Phases), :]
+    #SingleInput_4Phases = SingleInput_4Phases.iloc[len(SingleInput_4Phases) - 329 : len(SingleInput_4Phases), :]
+    #SingleInput_6Phases = SingleInput_6Phases.iloc[len(SingleInput_6Phases) - 329 : len(SingleInput_6Phases), :]
+    
+    
+    
+    
     MultipleInput_2Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Multiple', 2)
     MultipleInput_2Phases.tail(20)
     MultipleInput_4Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Multiple', 4)
     MultipleInput_4Phases.tail(20)
     MultipleInput_6Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Multiple', 6)
     MultipleInput_6Phases.tail(20)
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
 
 
 

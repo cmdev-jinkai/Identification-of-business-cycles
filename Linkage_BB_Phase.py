@@ -2,47 +2,89 @@
 """
 Name:linkage between Bootstrap Method and Phase Identification Table
 Author: Jinkai Zhang
-Date: July 10, 2020
+Original Version: July 10, 2020
+Revised Version: July 13, 2020
 
 Early Ouputs (Annulized Return) using 2-years (24 months) prediction:
-
+Data: S&P return data
+    
 Single Inputs (OECD only) (1964-2020):
         TWO PHASES IDENTIFICATION:
-            Expansion: 5.55%
-            Recession: 10.35%
+            Expansion: 'Mean(%)': 5.265, 'Standard Deviation(%)': 12.0993
+            Recession: 'Mean(%)': 9.8065, 'Standard Deviation(%)': 9.5194
 
         FOUR PHASES IDENTIFICATION:
-            Expansion: 4.64%
-            Recession: 9.60%
-            Slowdown: 5.48%
-            Recovery: 9.62%
+            Expansion: 'Mean(%)': 4.8671, 'Standard Deviation(%)': 9.4798
+            Recession: 'Mean(%)': 9.4869, 'Standard Deviation(%)': 10.7159
+            Slowdown: 'Mean(%)': 5.5946, 'Standard Deviation(%)': 13.8853
+            Recovery: 'Mean(%)': 10.1108, 'Standard Deviation(%)': 8.2154
 
         SIX PHASES IDENTIFICATION:
-            Expansion: 3.82%
-            Recession: 10.93%
-            Slowdown: 7.42%
-            Recovery: 7.44%
-            Re_acceleration: 1.34%
-            Double_dip: 13.50%
-    
-Multiple Inputs (Composite Z-Score method) (1993-2020):
+            Expansion: 'Mean(%)': 3.9642, 'Standard Deviation(%)': 11.1693
+            Recession: 'Mean(%)': 10.7005, 'Standard Deviation(%)': 10.7382
+            Slowdown: 'Mean(%)': 7.7264, 'Standard Deviation(%)': 13.3532
+            Recovery: 'Mean(%)': 7.502, 'Standard Deviation(%)': 6.9359
+            Re_acceleration: 'Mean(%)': 1.7386, 'Standard Deviation(%)': 13.0856 (note: sample size 36)
+            Double_dip: 'Mean(%)': 13.1571, 'Standard Deviation(%)': 5.63 (note: sample size 31)
+
+
+Single Inputs (OECD only) (1993-2020):
         TWO PHASES IDENTIFICATION:
-            Expansion: 9.14%
-            Recession: 6.09%
+            Expansion: 'Mean(%)': 6.3539, 'Standard Deviation(%)': 12.7844
+            Recession: 'Mean(%)': 11.286, 'Standard Deviation(%)': 12.4886
 
         FOUR PHASES IDENTIFICATION:
-            Expansion: 9.20%
-            Recession: 2.99%
-            Slowdown: 8.72%
-            Recovery: 9.91%
+            Expansion: 'Mean(%)': 7.6372, 'Standard Deviation(%)': 9.8329
+            Recession: 'Mean(%)': 8.7618, 'Standard Deviation(%)': 14.6362
+            Slowdown: Mean(%)': 5.163, 'Standard Deviation(%)': 14.9105
+            Recovery: 'Mean(%)': 13.5344, 'Standard Deviation(%)': 9.6558
 
         SIX PHASES IDENTIFICATION:
-            Expansion: 7.04%
-            Recession: -0.88%
-            Slowdown: 10.32%
-            Recovery: 9.36%
-            Re_acceleration: 9.53%
-            Double_dip: 17.68%
+            Expansion: 'Mean(%)': 8.9226, 'Standard Deviation(%)': 9.7188
+            Recession: 'Mean(%)': 11.8274, 'Standard Deviation(%)': 14.3121
+            Slowdown: 'Mean(%)': 6.646, 'Standard Deviation(%)': 15.0044
+            Recovery: 'Mean(%)': 10.7135, 'Standard Deviation(%)': 8.2993
+            Re_acceleration: 'Mean(%)': -6.2503, 'Standard Deviation(%)': 13.1282 (note: sample size ONLY 19)
+            Double_dip: 'Mean(%)': 11.9567, 'Standard Deviation(%)': 5.5312 (note: sample size ONLY 11)
+
+    
+    
+    
+        
+Multiple Inputs (Composite Z-Score method) (1993-2020):
+    
+        Correlation Matrix of Z-Score
+        Z1: Economic Growth - OECD CLI Index
+        Z2: Consumer Sentiment - University of Michigan Consumer Sentiment Index 
+        Z3: Financial Stress - Kansas City Financial Stress Index
+        Z4: Unemployment Rate - U.S. unemployment rate;
+        Z5: Producer Sentiment - ISM factor (ISM manufacturers’ survey production index);
+
+              Z1        Z2        Z3        Z4        Z5
+        Z1  1.000000  0.461546  0.375933  0.502463  0.677101
+        Z2  0.461546  1.000000  0.265916  0.632296  0.473199
+        Z3  0.375933  0.265916  1.000000  0.110936  0.458854
+        Z4  0.502463  0.632296  0.110936  1.000000  0.187146
+        Z5  0.677101  0.473199  0.458854  0.187146  1.000000
+        
+        
+        TWO PHASES IDENTIFICATION:
+            Expansion: 'Mean(%)': 9.3638, 'Standard Deviation(%)': 12.0728
+            Recession: 'Mean(%)': 6.0512, 'Standard Deviation(%)': 14.2945
+
+        FOUR PHASES IDENTIFICATION:
+            Expansion: 'Mean(%)': 9.4059, 'Standard Deviation(%)': 11.6625
+            Recession: 'Mean(%)': 3.0367, 'Standard Deviation(%)': 14.7808
+            Slowdown: 'Mean(%)': 9.3756, 'Standard Deviation(%)': 12.5365
+            Recovery: 'Mean(%)': 9.8559, 'Standard Deviation(%)': 12.6716
+
+        SIX PHASES IDENTIFICATION:
+            Expansion: 'Mean(%)': 7.1099, 'Standard Deviation(%)': 8.5921
+            Recession: 'Mean(%)': -1.818, 'Standard Deviation(%)': 13.0884
+            Slowdown: 'Mean(%)': 11.0346, 'Standard Deviation(%)': 14.0703
+            Recovery: 'Mean(%)': 9.5122, 'Standard Deviation(%)': 8.7556
+            Re_acceleration: 'Mean(%)': 10.0254, 'Standard Deviation(%)': 15.2299
+            Double_dip: None (sample size less than 10)
 """
 
 import pandas as pd
@@ -95,8 +137,17 @@ def Add_Return_Column(df_phase, df_return):
     return df_phase[['Date', 'phase', 'Return']]
 
 
-
-def Link_Phase_Bootstrap(df, phase_number, phase_name, periods_month):
+#KEY FUNCTION
+# df contains three columns named 'Date', 'phase', 'Return' (upper case for 'R')
+# The Return is in the unit of % 
+# phase_number: 2, 4, 6
+# phase_name: input the estimated returns of which phase required
+# periods_month is the horizon of prediction
+# two method for choice: NED and FS
+# TO BE EXTENDED to more phase names
+# condidence_interval: defaul = 95
+    
+def Link_Phase_Bootstrap(df, phase_number, phase_name, periods_month, method = 'NED', condidence_interval = 95):
     df.index = range(len(df))
     
     def Return_Detection(df, begin_index, return_history, periods_month):
@@ -131,9 +182,9 @@ def Link_Phase_Bootstrap(df, phase_number, phase_name, periods_month):
             else:
                 print("Something goes wrong, please have a check")
         if phase_name == 'expansion':
-            return bootstrap(expansion, periods_month, method = 'NED', condidence_interval = 80)
+            return bootstrap(expansion, periods_month, method = method, condidence_interval = condidence_interval)
         elif phase_name == 'contraction':
-            return bootstrap(contraction, periods_month, method = 'NED', condidence_interval = 80)
+            return bootstrap(contraction, periods_month, method = method, condidence_interval = condidence_interval)
             print('please check the input of phase name')
             
     elif phase_number == 4:
@@ -153,13 +204,13 @@ def Link_Phase_Bootstrap(df, phase_number, phase_name, periods_month):
             else:
                 print("Something goes wrong, please have a check")
         if phase_name == 'expansion':
-            return bootstrap(expansion, periods_month, method = 'NED', condidence_interval = 80)
+            return bootstrap(expansion, periods_month, method = method , condidence_interval = condidence_interval)
         elif phase_name == 'contraction':
-            return bootstrap(contraction, periods_month, method = 'NED', condidence_interval = 80)
+            return bootstrap(contraction, periods_month, method = method, condidence_interval = condidence_interval)
         elif phase_name == 'slowdown':
-            return bootstrap(slowdown, periods_month, method = 'NED', condidence_interval = 80)
+            return bootstrap(slowdown, periods_month, method = method, condidence_interval = condidence_interval)
         elif phase_name == 'recovery':
-            return bootstrap(recovery, periods_month, method = 'NED', condidence_interval = 80)
+            return bootstrap(recovery, periods_month, method = method, condidence_interval = condidence_interval)
         else:
             print('please check the input of phase name')
     
@@ -186,21 +237,23 @@ def Link_Phase_Bootstrap(df, phase_number, phase_name, periods_month):
             else:
                 print("Something goes wrong, please have a check")
         if phase_name == 'expansion':
-            return bootstrap(expansion, periods_month, method = 'NED', condidence_interval = 80)
+            return bootstrap(expansion, periods_month, method = method, condidence_interval = condidence_interval)
         elif phase_name == 'contraction':
-            return bootstrap(contraction, periods_month, method = 'NED', condidence_interval = 80)
+            return bootstrap(contraction, periods_month, method = method, condidence_interval = condidence_interval)
         elif phase_name == 'slowdown':
-            return bootstrap(slowdown, periods_month, method = 'NED', condidence_interval = 80)
+            return bootstrap(slowdown, periods_month, method = method, condidence_interval = condidence_interval)
         elif phase_name == 'recovery':
-            return bootstrap(recovery, periods_month, method = 'NED', condidence_interval = 80)
+            return bootstrap(recovery, periods_month, method = method, condidence_interval = condidence_interval)
         elif phase_name == 'double_dip':
-            if len(double_dip) >= 50:
-                return bootstrap(double_dip, periods_month, method = 'NED', condidence_interval = 80)
+            if len(double_dip) >= 10:
+                print('There are ' + str(len(double_dip)) + ' historical cumulative returns for bootstrap in double_dip phase. Please check robustness manually.')
+                return bootstrap(double_dip, periods_month, method = 'NED', condidence_interval = condidence_interval)
             else:
                 print('There are no sufficient historical data of returns for phase of' + phase_name)
         elif phase_name == 're-acceleration':
-            if len(double_dip) >= 50:
-                return bootstrap(re_acceleration, periods_month, method = 'NED', condidence_interval = 80)
+            if len(re_acceleration) >= 10:
+                print('There are ' + str(len(re_acceleration)) + ' historical cumulative returns for bootstrap in re_acceleration phase. Please check robustness manually.')
+                return bootstrap(re_acceleration, periods_month, method = 'NED', condidence_interval = condidence_interval)
             else:
                 print('There are no sufficient historical data of returns for phase of' + phase_name)
         else:
@@ -236,7 +289,8 @@ if __name__ == '__main__':
 
     """
     #annulized returns in prediction of 24 months returns
-    Single_2Phase_Expansion = Link_Phase_Bootstrap(SingleInput_2Phases, 2, 'expansion', 60)
+    
+    Single_2Phase_Expansion = Link_Phase_Bootstrap(SingleInput_2Phases, 2, 'expansion', 24)
     print('Single_2Phase_Expansion')
     print(Single_2Phase_Expansion)
     Single_2Phase_contraction = Link_Phase_Bootstrap(SingleInput_2Phases, 2, 'contraction', 24)
