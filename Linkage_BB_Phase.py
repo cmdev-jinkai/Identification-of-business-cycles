@@ -96,17 +96,26 @@ def Add_Return_Column(df_phase, df_return):
 
 
 
-
 def Link_Phase_Bootstrap(df, phase_number, phase_name, periods_month):
     df.index = range(len(df))
     
-    def Return_Detection(df, current_index, return_history, periods_month):
-        current_index += 1
-        curent_loop = 1
-        while current_index < len(df) and curent_loop <= periods_month:
-            return_history.append(df.Return[current_index])
-            curent_loop += 1
-            current_index += 1
+    def Return_Detection(df, begin_index, return_history, periods_month):
+        begin_index += 1
+        end_index = begin_index + periods_month
+        if end_index - 1 <= len(df):
+            returns_monthly = df.Return[begin_index:end_index].tolist()
+            def plus_one (x): return (x/100 + 1)
+            returns_monthly = list(map(plus_one, returns_monthly))
+            #culmulate the monthly return to LTR
+            returns_periods = np.prod(returns_monthly) - 1
+            #Transfer from Cumulated return to Anualized return
+            # (1 + Montly_Return) ^ periods_month - 1 = Cumul_Ret    ----(1)
+            Montly_Return = (returns_periods + 1) ** (1 / periods_month) - 1
+            # (1 + Montly_Return) ^ 12 - 1 = Anualized_Return    ----(2)
+            Anualized_Return = (1 + Montly_Return) ** 12 - 1
+            #transfer back to the unit of '%'
+            Anualized_Return = Anualized_Return * 100
+            return_history.append(Anualized_Return)
         else:
             pass
         return return_history
@@ -227,7 +236,7 @@ if __name__ == '__main__':
 
     """
     #annulized returns in prediction of 24 months returns
-    Single_2Phase_Expansion = Link_Phase_Bootstrap(SingleInput_2Phases, 2, 'expansion', 24)
+    Single_2Phase_Expansion = Link_Phase_Bootstrap(SingleInput_2Phases, 2, 'expansion', 60)
     print('Single_2Phase_Expansion')
     print(Single_2Phase_Expansion)
     Single_2Phase_contraction = Link_Phase_Bootstrap(SingleInput_2Phases, 2, 'contraction', 24)
@@ -305,7 +314,6 @@ if __name__ == '__main__':
     Multiple_6Phase_re_acceleration = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 're-acceleration', 24)
     print('Multiple_6Phase_re_acceleration')
     print(Multiple_6Phase_re_acceleration)
-
 
 
 
