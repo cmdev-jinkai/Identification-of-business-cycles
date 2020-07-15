@@ -426,7 +426,7 @@ if __name__ == '__main__':
     SingleInput_6Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Single', 6)
     SingleInput_6Phases.tail(20)
     
-    #run it when to get the OECD data since 1993
+    # run it when to get the OECD data since 1993
     # SingleInput_2Phases = SingleInput_2Phases.iloc[len(SingleInput_2Phases) - 329 : len(SingleInput_2Phases), :]
     # SingleInput_4Phases = SingleInput_4Phases.iloc[len(SingleInput_4Phases) - 329 : len(SingleInput_4Phases), :]
     # SingleInput_6Phases = SingleInput_6Phases.iloc[len(SingleInput_6Phases) - 329 : len(SingleInput_6Phases), :]
