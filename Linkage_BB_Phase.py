@@ -10,45 +10,45 @@ Data: S&P return data
     
 Single Inputs (OECD only) (1964-2020):
         TWO PHASES IDENTIFICATION:
-            Expansion: {'Mean(%)': 5.5418, 'Standard Deviation(%)': 12.5478, 'Median(%)': 5.5426, '25th(%)': -2.9203, '75th(%)': 14.0062, 'Confidence Interval(95)(%)': [-15.0993, 26.1787]}
-            Recession: {'Mean(%)': 9.255, 'Standard Deviation(%)': 9.2269, 'Median(%)': 9.2553, '25th(%)': 3.0327, '75th(%)': 15.478, 'Confidence Interval(95)(%)': [-5.9236, 24.431]}
+            Expansion: {'Mean(%)': 5.5872, 'Standard Deviation(%)': 12.5553, 'Median(%)': 5.588, '25th(%)': -2.8806, '75th(%)': 14.0565, 'Confidence Interval(95)(%)': [-15.067, 26.2353]}
+            Recession: {'Mean(%)': 9.2208, 'Standard Deviation(%)': 9.2198, 'Median(%)': 9.2202, '25th(%)': 3.0021, '75th(%)': 15.4392, 'Confidence Interval(95)(%)': [-5.9448, 24.3846]}
 
         FOUR PHASES IDENTIFICATION:
-            Expansion: {'Mean(%)': 6.0173, 'Standard Deviation(%)': 10.8531, 'Median(%)': 6.0173, '25th(%)': -1.3034, '75th(%)': 13.337, 'Confidence Interval(95)(%)': [-11.8328, 23.8667]}
-            Recession: {'Mean(%)': 9.1006, 'Standard Deviation(%)': 10.5081, 'Median(%)': 9.1003, '25th(%)': 2.014, '75th(%)': 16.1888, 'Confidence Interval(95)(%)': [-8.1839, 26.3848]}
-            Slowdown:  {'Mean(%)': 5.0705, 'Standard Deviation(%)': 14.0915, 'Median(%)': 5.0689, '25th(%)': -4.4352, '75th(%)': 14.5747, 'Confidence Interval(95)(%)': [-18.106, 28.2479]}
-            Recovery:  {'Mean(%)': 9.4332, 'Standard Deviation(%)': 7.4936, 'Median(%)': 9.4329, '25th(%)': 4.3783, '75th(%)': 14.4879, 'Confidence Interval(95)(%)': [-2.8906, 21.7583]}
+            Expansion: {'Mean(%)': 5.7928, 'Standard Deviation(%)': 10.7167, 'Median(%)': 5.7919, '25th(%)': -1.4356, '75th(%)': 13.0203, 'Confidence Interval(95)(%)': [-11.8335, 23.4214]}
+            Recession: {'Mean(%)': 8.8764, 'Standard Deviation(%)': 10.431, 'Median(%)': 8.878, '25th(%)': 1.8408, '75th(%)': 15.9121, 'Confidence Interval(95)(%)': [-8.2812, 26.031]}
+            Slowdown:  {'Mean(%)': 5.7508, 'Standard Deviation(%)': 14.2567, 'Median(%)': 5.7505, '25th(%)': -3.865, '75th(%)': 15.3649, 'Confidence Interval(95)(%)': [-17.6977, 29.2003]}
+            Recovery:  {'Mean(%)': 9.2871, 'Standard Deviation(%)': 7.3566, 'Median(%)': 9.2873, '25th(%)': 4.325, '75th(%)': 14.2495, 'Confidence Interval(95)(%)': [-2.8132, 21.3882]}
 
         SIX PHASES IDENTIFICATION:
-            Expansion: {'Mean(%)': 5.2696, 'Standard Deviation(%)': 11.8592, 'Median(%)': 5.2715, '25th(%)': -2.7303, '75th(%)': 13.2697, 'Confidence Interval(95)(%)': [-14.2395, 24.7728]}
-            Recession: {'Mean(%)': 10.021, 'Standard Deviation(%)': 10.2269, 'Median(%)': 10.0215, '25th(%)': 3.1238, '75th(%)': 16.9195, 'Confidence Interval(95)(%)': [-6.8003, 26.8425]}
-            Slowdown: {'Mean(%)': 7.1837, 'Standard Deviation(%)': 13.4067, 'Median(%)': 7.1831, '25th(%)': -1.8573, '75th(%)': 16.2274, 'Confidence Interval(95)(%)': [-14.8669, 29.2369]}
-            Recovery: {'Mean(%)': 7.6315, 'Standard Deviation(%)': 7.0785, 'Median(%)': 7.6319, '25th(%)': 2.8565, '75th(%)': 12.4059, 'Confidence Interval(95)(%)': [-4.012, 19.275]}
-            Re_acceleration: {'Mean(%)': 1.2145, 'Standard Deviation(%)': 13.882, 'Median(%)': 1.215, '25th(%)': -8.1476, '75th(%)': 10.5775, 'Confidence Interval(95)(%)': [-21.6204, 24.0479]} 
+            Expansion: {'Mean(%)': 5.2695, 'Standard Deviation(%)': 11.8587, 'Median(%)': 5.2701, '25th(%)': -2.7288, '75th(%)': 13.2676, 'Confidence Interval(95)(%)': [-14.2379, 24.7729]}
+            Recession: {'Mean(%)': 10.0212, 'Standard Deviation(%)': 10.2286, 'Median(%)': 10.0228, '25th(%)': 3.1215, '75th(%)': 16.9221, 'Confidence Interval(95)(%)': [-6.8024, 26.841]}
+            Slowdown: {'Mean(%)': 7.1842, 'Standard Deviation(%)': 13.4072, 'Median(%)': 7.1839, '25th(%)': -1.8577, '75th(%)': 16.2262, 'Confidence Interval(95)(%)': [-14.867, 29.2377]}
+            Recovery: {'Mean(%)': 7.6323, 'Standard Deviation(%)': 7.0786, 'Median(%)': 7.633, '25th(%)': 2.8572, '75th(%)': 12.4071, 'Confidence Interval(95)(%)': [-4.0113, 19.2743]}
+            Re_acceleration: {'Mean(%)': 1.2167, 'Standard Deviation(%)': 13.8811, 'Median(%)': 1.2154, '25th(%)': -8.1452, '75th(%)': 10.5797, 'Confidence Interval(95)(%)': [-21.613, 24.0514]}
                                     (note: sample size 32)
-            Double_dip: {'Mean(%)': 12.8741, 'Standard Deviation(%)': 5.7374, 'Median(%)': 12.8741, '25th(%)': 9.004, '75th(%)': 16.7444, 'Confidence Interval(95)(%)': [3.4378, 22.3116]}
+            Double_dip: {'Mean(%)': 12.8732, 'Standard Deviation(%)': 5.7374, 'Median(%)': 12.8744, '25th(%)': 9.0033, '75th(%)': 16.7435, 'Confidence Interval(95)(%)': [3.4357, 22.3099]}
                                     (note: sample size 26)
 
 
 Single Inputs (OECD only) (1993-2020):
         TWO PHASES IDENTIFICATION:
-            Expansion: {'Mean(%)': 2.6818, 'Standard Deviation(%)': 13.1142, 'Median(%)': 2.6815, '25th(%)': -6.1635, '75th(%)': 11.5278, 'Confidence Interval(95)(%)': [-18.8905, 24.2501]}
-            Recession: {'Mean(%)': 10.1284, 'Standard Deviation(%)': 11.7021, 'Median(%)': 10.1287, '25th(%)': 2.2367, '75th(%)': 18.0215, 'Confidence Interval(95)(%)': [-9.1202, 29.3771]}
+            Expansion: {'Mean(%)': 7.1355, 'Standard Deviation(%)': 13.5051, 'Median(%)': 7.1353, '25th(%)': -1.9728, '75th(%)': 16.2432, 'Confidence Interval(95)(%)': [-15.0768, 29.3492]}
+            Recession: {'Mean(%)': 10.1279, 'Standard Deviation(%)': 11.7038, 'Median(%)': 10.1279, '25th(%)': 2.2325, '75th(%)': 18.0222, 'Confidence Interval(95)(%)': [-9.1208, 29.3806]}
 
         FOUR PHASES IDENTIFICATION:
-            Expansion: {'Mean(%)': 9.2586, 'Standard Deviation(%)': 11.2192, 'Median(%)': 9.2575, '25th(%)': 1.6919, '75th(%)': 16.8279, 'Confidence Interval(95)(%)': [-9.1935, 27.7113]}
-            Recession: {'Mean(%)': 8.2052, 'Standard Deviation(%)': 13.1667, 'Median(%)': 8.2043, '25th(%)': -0.6754, '75th(%)': 17.0859, 'Confidence Interval(95)(%)': [-13.4525, 29.8643]}
-            Slowdown: {'Mean(%)': 4.5107, 'Standard Deviation(%)': 15.4757, 'Median(%)': 4.5101, '25th(%)': -5.9304, '75th(%)': 14.9485, 'Confidence Interval(95)(%)': [-20.9432, 29.9723]}
-            Recovery: {'Mean(%)': 12.4265, 'Standard Deviation(%)': 9.1518, 'Median(%)': 12.4267, '25th(%)': 6.2535, '75th(%)': 18.5992, 'Confidence Interval(95)(%)': [-2.6279, 27.4786]}
+            Expansion: {'Mean(%)': 9.0855, 'Standard Deviation(%)': 11.1413, 'Median(%)': 9.0854, '25th(%)': 1.5711, '75th(%)': 16.6007, 'Confidence Interval(95)(%)': [-9.2391, 27.4127]}
+            Recession: {'Mean(%)': 7.8286, 'Standard Deviation(%)': 13.1321, 'Median(%)': 7.8286, '25th(%)': -1.0292, '75th(%)': 16.6844, 'Confidence Interval(95)(%)': [-13.7699, 29.4299]}
+            Slowdown: {'Mean(%)': 5.5169, 'Standard Deviation(%)': 15.675, 'Median(%)': 5.5169, '25th(%)': -5.0563, '75th(%)': 16.0895, 'Confidence Interval(95)(%)': [-20.2639, 31.3]}
+            Recovery: {'Mean(%)': 12.0977, 'Standard Deviation(%)': 8.99, 'Median(%)': 12.0975, '25th(%)': 6.0332, '75th(%)': 18.1624, 'Confidence Interval(95)(%)': [-2.6893, 26.8847]}
 
         SIX PHASES IDENTIFICATION:
-            Expansion: {'Mean(%)': 10.1806, 'Standard Deviation(%)': 10.3191, 'Median(%)': 10.1796, '25th(%)': 3.2202, '75th(%)': 17.142, 'Confidence Interval(95)(%)': [-6.7933, 27.1546]}
-            Recession: {'Mean(%)': 10.1718, 'Standard Deviation(%)': 13.0645, 'Median(%)': 10.1707, '25th(%)': 1.3598, '75th(%)': 18.9859, 'Confidence Interval(95)(%)': [-11.319, 31.6572]}
-            Slowdown: {'Mean(%)': 6.5957, 'Standard Deviation(%)': 15.5456, 'Median(%)': 6.5978, '25th(%)': -3.8907, '75th(%)': 17.0803, 'Confidence Interval(95)(%)': [-18.9735, 32.1632]}
-            Recovery: {'Mean(%)': 10.6466, 'Standard Deviation(%)': 8.7354, 'Median(%)': 10.6472, '25th(%)': 4.7549, '75th(%)': 16.5379, 'Confidence Interval(95)(%)': [-3.7199, 25.0161]}
-            Re_acceleration: {'Mean(%)': -7.335, 'Standard Deviation(%)': 12.6306, 'Median(%)': -7.3352, '25th(%)': -15.8535, '75th(%)': 1.185, 'Confidence Interval(95)(%)': [-28.1084, 13.4384]}
+            Expansion: {'Mean(%)': 10.1823, 'Standard Deviation(%)': 10.3195, 'Median(%)': 10.1808, '25th(%)': 3.2234, '75th(%)': 17.1423, 'Confidence Interval(95)(%)': [-6.7904, 27.1552]}
+            Recession: {'Mean(%)': 10.17, 'Standard Deviation(%)': 13.0633, 'Median(%)': 10.1698, '25th(%)': 1.359, '75th(%)': 18.9822, 'Confidence Interval(95)(%)': [-11.3176, 31.6544]}
+            Slowdown: {'Mean(%)': 6.5948, 'Standard Deviation(%)': 15.5462, 'Median(%)': 6.5947, '25th(%)': -3.89, '75th(%)': 17.0805, 'Confidence Interval(95)(%)': [-18.9745, 32.1671]}
+            Recovery: {'Mean(%)': 10.647, 'Standard Deviation(%)': 8.7357, 'Median(%)': 10.6475, '25th(%)': 4.7551, '75th(%)': 16.5386, 'Confidence Interval(95)(%)': [-3.7218, 25.0146]}
+            Re_acceleration: {'Mean(%)': -7.3354, 'Standard Deviation(%)': 12.631, 'Median(%)': -7.3361, '25th(%)': -15.8542, '75th(%)': 1.1819, 'Confidence Interval(95)(%)': [-28.1097, 13.4403]}
                     (note: sample size ONLY 18)
-            Double_dip: {'Mean(%)': 11.3828, 'Standard Deviation(%)': 5.3678, 'Median(%)': 11.3833, '25th(%)': 7.7622, '75th(%)': 15.0031, 'Confidence Interval(95)(%)': [2.5544, 20.2126]}
+            Double_dip: {'Mean(%)': 11.3835, 'Standard Deviation(%)': 5.3678, 'Median(%)': 11.3827, '25th(%)': 7.7626, '75th(%)': 15.0043, 'Confidence Interval(95)(%)': [2.5558, 20.2128]}
                     (note: sample size ONLY 12)
 
     
@@ -73,21 +73,21 @@ Multiple Inputs (Composite Z-Score method) (1993-2020):
         
         
         TWO PHASES IDENTIFICATION:
-            Expansion: {'Mean(%)': 9.2196, 'Standard Deviation(%)': 12.1711, 'Median(%)': 9.2206, '25th(%)': 1.0096, '75th(%)': 17.4295, 'Confidence Interval(95)(%)': [-10.8002, 29.2346]}
-            Recession: {'Mean(%)': 6.6456, 'Standard Deviation(%)': 14.0232, 'Median(%)': 6.6455, '25th(%)': -2.8125, '75th(%)': 16.1024, 'Confidence Interval(95)(%)': [-16.4187, 29.714]}
+            Expansion: {'Mean(%)': 9.0786, 'Standard Deviation(%)': 12.3315, 'Median(%)': 9.0785, '25th(%)': 0.7596, '75th(%)': 17.3967, 'Confidence Interval(95)(%)': [-11.2044, 29.3621]}
+            Recession: {'Mean(%)': 6.8877, 'Standard Deviation(%)': 13.8105, 'Median(%)': 6.8883, '25th(%)': -2.4266, '75th(%)': 16.2019, 'Confidence Interval(95)(%)': [-15.8292, 29.6042]}
 
         FOUR PHASES IDENTIFICATION:
-            Expansion: {'Mean(%)': 8.7557, 'Standard Deviation(%)': 11.8746, 'Median(%)': 8.7551, '25th(%)': 0.7463, '75th(%)': 16.7635, 'Confidence Interval(95)(%)': [-10.7764, 28.2873]}
-            Recession: {'Mean(%)': 3.398, 'Standard Deviation(%)': 14.4936, 'Median(%)': 3.4003, '25th(%)': -6.379, '75th(%)': 13.1752, 'Confidence Interval(95)(%)': [-20.4421, 27.236]}
-            Slowdown: {'Mean(%)': 9.8489, 'Standard Deviation(%)': 12.5483, 'Median(%)': 9.8488, '25th(%)': 1.3842, '75th(%)': 18.3128, 'Confidence Interval(95)(%)': [-10.7924, 30.4881]}
-            Recovery: {'Mean(%)': 10.5003, 'Standard Deviation(%)': 12.3862, 'Median(%)': 10.5014, '25th(%)': 2.1457, '75th(%)': 18.8545, 'Confidence Interval(95)(%)': [-9.8738, 30.8751]}
+            Expansion: {'Mean(%)': 8.9271, 'Standard Deviation(%)': 13.0207, 'Median(%)': 8.9277, '25th(%)': 0.1439, '75th(%)': 17.7102, 'Confidence Interval(95)(%)': [-12.4892, 30.3421]}
+            Recession: {'Mean(%)': 3.4395, 'Standard Deviation(%)': 14.8016, 'Median(%)': 3.4416, '25th(%)': -6.5467, '75th(%)': 13.4246, 'Confidence Interval(95)(%)': [-20.9044, 27.7841]}
+            Slowdown: {'Mean(%)': 9.3173, 'Standard Deviation(%)': 11.5359, 'Median(%)': 9.3172, '25th(%)': 1.5363, '75th(%)': 17.0988, 'Confidence Interval(95)(%)': [-9.6577, 28.2903]}
+            Recovery: {'Mean(%)': 11.5569, 'Standard Deviation(%)': 10.4311, 'Median(%)': 11.5575, '25th(%)': 4.5226, '75th(%)': 18.5923, 'Confidence Interval(95)(%)': [-5.5989, 28.7139]}
 
         SIX PHASES IDENTIFICATION:
-            Expansion: {'Mean(%)': 11.2394, 'Standard Deviation(%)': 10.6285, 'Median(%)': 11.2393, '25th(%)': 4.0696, '75th(%)': 18.4078, 'Confidence Interval(95)(%)': [-6.2417, 28.7227]}
-            Recession: {'Mean(%)': 1.4846, 'Standard Deviation(%)': 15.3556, 'Median(%)': 1.4848, '25th(%)': -8.8729, '75th(%)': 11.844, 'Confidence Interval(95)(%)': [-23.7735, 26.7413]}
-            Slowdown: {'Mean(%)': 9.8121, 'Standard Deviation(%)': 13.8501, 'Median(%)': 9.813, '25th(%)': 0.47, '75th(%)': 19.1534, 'Confidence Interval(95)(%)': [-12.9697, 32.5937]}
-            Recovery: {'Mean(%)': 10.9936, 'Standard Deviation(%)': 9.2984, 'Median(%)': 10.9941, '25th(%)': 4.7208, '75th(%)': 17.2638, 'Confidence Interval(95)(%)': [-4.3004, 26.2871]}
-            Re_acceleration: {'Mean(%)': 2.6818, 'Standard Deviation(%)': 13.1142, 'Median(%)': 2.6815, '25th(%)': -6.1635, '75th(%)': 11.5278, 'Confidence Interval(95)(%)': [-18.8905, 24.2501]}
+            Expansion: {'Mean(%)': 11.2373, 'Standard Deviation(%)': 10.6271, 'Median(%)': 11.2342, '25th(%)': 4.0699, '75th(%)': 18.4056, 'Confidence Interval(95)(%)': [-6.2382, 28.7177]}
+            Recession: {'Mean(%)': 1.4836, 'Standard Deviation(%)': 15.3541, 'Median(%)': 1.4851, '25th(%)': -8.8732, '75th(%)': 11.8401, 'Confidence Interval(95)(%)': [-23.7689, 26.7367]}
+            Slowdown: {'Mean(%)': 10.1912, 'Standard Deviation(%)': 13.4637, 'Median(%)': 10.1906, '25th(%)': 1.1088, '75th(%)': 19.2718, 'Confidence Interval(95)(%)': [-11.95, 32.337]}
+            Recovery: {'Mean(%)': 10.995, 'Standard Deviation(%)': 9.3002, 'Median(%)': 10.9963, '25th(%)': 4.7219, '75th(%)': 17.2673, 'Confidence Interval(95)(%)': [-4.3038, 26.2911]}
+            Re_acceleration: {'Mean(%)': 1.9974, 'Standard Deviation(%)': 13.5896, 'Median(%)': 1.997, '25th(%)': -7.1696, '75th(%)': 11.163, 'Confidence Interval(95)(%)': [-20.3516, 24.3518]}{'Mean(%)': 2.6818, 'Standard Deviation(%)': 13.1142, 'Median(%)': 2.6815, '25th(%)': -6.1635, '75th(%)': 11.5278, 'Confidence Interval(95)(%)': [-18.8905, 24.2501]}
                             (note: sample size 37)
             Double_dip: None (sample size less than 10)
 """
