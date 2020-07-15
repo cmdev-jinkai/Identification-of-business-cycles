@@ -241,40 +241,34 @@ def Ger_Zscore_Composite (df1, df2, df3, df4, df5):
 
 def Limit_Switches_Single (df):
     for i in range(1, len(df) - 1):
-        if df.iloc[i]['phase'] != df.iloc[i-1]['phase'] and df.iloc[i]['phase'] != df.iloc[i+1]['phase']:
-            if abs(df.iloc[i]['Z_Score'] - df.iloc[i-1]['Z_Score']) >= 1:
-                   df.iloc[i]['phase'] != df.iloc[i-1]['phase']
-            else:
-                pass
+        if df.iloc[i]['phase'] != df.iloc[i-1]['phase'] and df.iloc[i]['phase'] != df.iloc[i+1]['phase'] and abs(df.iloc[i]['Z_Score'] - df.iloc[i-1]['Z_Score']) < 1:
+            df.loc[i, 'phase']  = df.iloc[i-1]['phase']
         else:
             pass
-    j = len(df) - 1
-    if df.iloc[j]['phase'] != df.iloc[j-1]['phase']:
-        if abs(df.iloc[j]['Z_Score'] - df.iloc[j-1]['Z_Score']) >= 1:
-                   df.iloc[j]['phase'] != df.iloc[j-1]['phase']
-        else:
-            pass
-    else:
-        pass
+    # j = len(df) - 1
+    # if df.iloc[j]['phase'] != df.iloc[j-1]['phase']:
+    #     if abs(df.iloc[j]['Z_Score'] - df.iloc[j-1]['Z_Score']) >= 1:
+    #                df.iloc[j]['phase'] = df.iloc[j-1]['phase']
+    #     else:
+    #         pass
+    # else:
+    #     pass
     return df
 
 def Limit_Switches_Multiple (df):
     for i in range(1, len(df) - 1):
-        if df.iloc[i]['phase'] != df.iloc[i-1]['phase'] and df.iloc[i]['phase'] != df.iloc[i+1]['phase']:
-            if abs(df.iloc[i]['Z_Composite'] - df.iloc[i-1]['Z_Composite']) >= 1:
-                   df.iloc[i]['phase'] != df.iloc[i-1]['phase']
-            else:
-                pass
+        if df.iloc[i]['phase'] != df.iloc[i-1]['phase'] and df.iloc[i]['phase'] != df.iloc[i+1]['phase'] and abs(df.iloc[i]['Z_Composite'] - df.iloc[i-1]['Z_Composite']) < 1:
+            df.loc[i, 'phase'] = df.iloc[i-1]['phase']   
         else:
             pass
-    j = len(df) - 1
-    if df.iloc[j]['phase'] != df.iloc[j-1]['phase']:
-        if abs(df.iloc[j]['Z_Composite'] - df.iloc[j-1]['Z_Composite']) >= 1:
-                   df.iloc[j]['phase'] != df.iloc[j-1]['phase']
-        else:
-            pass
-    else:
-        pass
+    # j = len(df) - 1
+    # if df.iloc[j]['phase'] != df.iloc[j-1]['phase']:
+    #     if abs(df.iloc[j]['Z_Composite'] - df.iloc[j-1]['Z_Composite']) >= 1:
+    #                df.iloc[j]['phase'] = df.iloc[j-1]['phase']
+    #     else:
+    #         pass
+    # else:
+    #     pass
     return df
 
 def Identify_Phase (df_Single, df_Multiple, Series_Type, Number_Phase):   
@@ -436,9 +430,8 @@ if __name__ == '__main__':
     # SingleInput_2Phases = SingleInput_2Phases.iloc[len(SingleInput_2Phases) - 329 : len(SingleInput_2Phases), :]
     # SingleInput_4Phases = SingleInput_4Phases.iloc[len(SingleInput_4Phases) - 329 : len(SingleInput_4Phases), :]
     # SingleInput_6Phases = SingleInput_6Phases.iloc[len(SingleInput_6Phases) - 329 : len(SingleInput_6Phases), :]
-    
-    
-    
+
+
     
     MultipleInput_2Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Multiple', 2)
     MultipleInput_2Phases.tail(20)
@@ -448,13 +441,13 @@ if __name__ == '__main__':
     MultipleInput_6Phases.tail(20)
 
 
-
-
-
+    # SingleInput_2Phases.to_csv('output_csv/SingleInput_2Phases.csv')
+    # SingleInput_4Phases.to_csv('output_csv/SingleInput_4Phases.csv')
+    # SingleInput_6Phases.to_csv('output_csv/SingleInput_6Phases.csv') 
     
-
-
-
+    # MultipleInput_2Phases.to_csv('output_csv/MultipleInput_2Phases.csv')
+    # MultipleInput_4Phases.to_csv('output_csv/MultipleInput_4Phases.csv')
+    # MultipleInput_6Phases.to_csv('output_csv/MultipleInput_6Phases.csv')
 
 
 
