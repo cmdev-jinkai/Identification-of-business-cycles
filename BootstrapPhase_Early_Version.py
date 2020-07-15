@@ -11,35 +11,37 @@ Index: U.S S&P 500
 Predicted years: 2 years (this allows users to choose the number of months)
 Note: the prediction is based on the starting point at differnt phases
 
+---ANNULIZED RETURN---
+    
 TWO PHASES IDENTIFICATION:
-    Expansion: 15.01%
-    Recession: 25.53%
+    Expansion: 4.41%
+    Recession: 11.69%
 
 FOUR PHASES IDENTIFICATION:
-    Expansion: 7.78%
-    Recession: 25.82%
-    Slowdown: 16.12%
-    Recovery: 23.02%
+    Expansion: 3.07%
+    Recession: 11.59%
+    Slowdown: 6.84%
+    Recovery: 11.25%
 
 SIX PHASES IDENTIFICATION:
-    Expansion: 7.98%
-    Recession: 25.22%
-    Slowdown: 9.35%
-    Recovery: 24.29%
-    DoubleUp: 14.77%
-    DoubleDown: 23.65%
+    Expansion: 4.21%
+    Recession: 11.40%
+    Slowdown: 3.09%
+    Recovery: 11.06%
+    DoubleUp: 6.6%
+    DoubleDown: 10.8%
 
 """
 import pandas as pd
 import numpy as np
 import random
 from datetime import datetime
-from IdentifyPhase import Identify_Phase
+from IdentifyPhase_Early_Version import Identify_Phase
 from Bootstrap import bootstrap
 
-ALL_CLI = pd.read_csv('OECD.csv')
+ALL_CLI = pd.read_csv('Data/OECD.csv')
 OECD_CLI = ALL_CLI[ALL_CLI.LOCATION == 'OECD'][['TIME', 'Value']]
-SP_return = pd.read_csv('sp_price.csv')
+SP_return = pd.read_csv('Data/sp_price.csv')
 
 
 def Format_Date (df):

@@ -1,5 +1,5 @@
 '''
-Reference: https://github.com/ClearMacroIPD/MHF/blob/master/NOWCASTING/MIDASMODEL.py
+Reference: https://github.com/ClearMacroIPD/MHF/blob/master/MTR/CYCLE/PHASES.py
 '''
 
 import pandas as pd
@@ -211,7 +211,6 @@ if __name__ == '__main__':
     thresh = 100  # optional 'mean', 'median'
     param = PIPE.param(underlying)
     df = param[underlying]['economics']['gdp']
-
     # identify cycle phases
     df_cycle = get_cycle_phase(df, model, window, thresh)
     print(df_cycle['phase'].tail(20))

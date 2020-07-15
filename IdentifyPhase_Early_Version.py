@@ -30,7 +30,7 @@ import numpy as np
 import random
 from datetime import datetime
 
-ALL_CLI = pd.read_csv('OECD.csv')
+ALL_CLI = pd.read_csv('Data/OECD.csv')
 OECD_CLI = ALL_CLI[ALL_CLI.LOCATION == 'OECD'][['TIME', 'Value']]
 
 #SP_return = pd.read_csv('sp_price.csv')
