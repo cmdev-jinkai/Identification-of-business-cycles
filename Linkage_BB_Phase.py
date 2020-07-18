@@ -152,7 +152,121 @@ def Add_Return_Column(df_phase, df_return):
 # TO BE EXTENDED to more phase names
 # condidence_interval: defaul = 95
     
-def Link_Phase_Bootstrap(df, phase_number, phase_name, periods_month, method = 'NED', condidence_interval = 95):
+# def Link_Phase_Bootstrap(df, phase_number, phase_name, periods_month, method = 'NED', condidence_interval = 95):
+#     df.index = range(len(df))
+    
+#     def Return_Detection(df, begin_index, return_history, periods_month):
+#         begin_index += 1
+#         end_index = begin_index + periods_month
+#         if end_index - 1 <= len(df):
+#             returns_monthly = df.Return[begin_index:end_index].tolist()
+#             def plus_one (x): return (x/100 + 1)
+#             returns_monthly = list(map(plus_one, returns_monthly))
+#             #culmulate the monthly return to LTR
+#             returns_periods = np.prod(returns_monthly) - 1
+#             #Transfer from Cumulated return to Anualized return
+#             # (1 + Montly_Return) ^ periods_month - 1 = Cumul_Ret    ----(1)
+#             Montly_Return = (returns_periods + 1) ** (1 / periods_month) - 1
+#             # (1 + Montly_Return) ^ 12 - 1 = Anualized_Return    ----(2)
+#             Anualized_Return = (1 + Montly_Return) ** 12 - 1
+#             #transfer back to the unit of '%'
+#             Anualized_Return = Anualized_Return * 100
+#             return_history.append(Anualized_Return)
+#         else:
+#             pass
+#         return return_history
+            
+#     if phase_number == 2:
+#         expansion = []
+#         contraction = []
+#         for i in range(len(df)):
+#             if df.phase[i] == 'expansion':
+#                 expansion = Return_Detection(df, i, expansion, periods_month)
+#             elif df.phase[i] == 'contraction':
+#                 contraction = Return_Detection(df, i, contraction, periods_month)
+#             else:
+#                 print("Something goes wrong, please have a check")
+#         if phase_name == 'expansion':
+#             return bootstrap(expansion, periods_month, method = method, condidence_interval = condidence_interval)
+#         elif phase_name == 'contraction':
+#             return bootstrap(contraction, periods_month, method = method, condidence_interval = condidence_interval)
+#             print('please check the input of phase name')
+            
+#     elif phase_number == 4:
+#         expansion = []
+#         contraction = []
+#         slowdown = []
+#         recovery = []
+#         for i in range(len(df)):
+#             if df.phase[i] == 'expansion':
+#                 expansion = Return_Detection(df, i, expansion, periods_month)
+#             elif df.phase[i] == 'contraction':
+#                 contraction = Return_Detection(df, i, contraction, periods_month)
+#             elif df.phase[i] == 'slowdown':
+#                 slowdown = Return_Detection(df, i, slowdown, periods_month)
+#             elif df.phase[i] == 'recovery':
+#                 recovery = Return_Detection(df, i, recovery, periods_month)
+#             else:
+#                 print("Something goes wrong, please have a check")
+#         if phase_name == 'expansion':
+#             return bootstrap(expansion, periods_month, method = method , condidence_interval = condidence_interval)
+#         elif phase_name == 'contraction':
+#             return bootstrap(contraction, periods_month, method = method, condidence_interval = condidence_interval)
+#         elif phase_name == 'slowdown':
+#             return bootstrap(slowdown, periods_month, method = method, condidence_interval = condidence_interval)
+#         elif phase_name == 'recovery':
+#             return bootstrap(recovery, periods_month, method = method, condidence_interval = condidence_interval)
+#         else:
+#             print('please check the input of phase name')
+    
+#     elif phase_number == 6:
+#         expansion = []
+#         contraction = []
+#         slowdown = []
+#         recovery = []
+#         double_dip = []
+#         re_acceleration = []
+#         for i in range(len(df)):
+#             if df.phase[i] == 'expansion':
+#                 expansion = Return_Detection(df, i, expansion, periods_month)
+#             elif df.phase[i] == 'contraction':
+#                 contraction = Return_Detection(df, i, contraction, periods_month)
+#             elif df.phase[i] == 'slowdown':
+#                 slowdown = Return_Detection(df, i, slowdown, periods_month)
+#             elif df.phase[i] == 'recovery':
+#                 recovery = Return_Detection(df, i, recovery, periods_month)
+#             elif df.phase[i] == 'double_dip':
+#                 double_dip = Return_Detection(df, i, double_dip, periods_month)
+#             elif df.phase[i] == 're-acceleration':
+#                 re_acceleration = Return_Detection(df, i, re_acceleration, periods_month)
+#             else:
+#                 print("Something goes wrong, please have a check")
+#         if phase_name == 'expansion':
+#             return bootstrap(expansion, periods_month, method = method, condidence_interval = condidence_interval)
+#         elif phase_name == 'contraction':
+#             return bootstrap(contraction, periods_month, method = method, condidence_interval = condidence_interval)
+#         elif phase_name == 'slowdown':
+#             return bootstrap(slowdown, periods_month, method = method, condidence_interval = condidence_interval)
+#         elif phase_name == 'recovery':
+#             return bootstrap(recovery, periods_month, method = method, condidence_interval = condidence_interval)
+#         elif phase_name == 'double_dip':
+#             if len(double_dip) >= 10:
+#                 print('There are ' + str(len(double_dip)) + ' historical cumulative returns for bootstrap in double_dip phase. Please check robustness manually.')
+#                 return bootstrap(double_dip, periods_month, method = 'NED', condidence_interval = condidence_interval)
+#             else:
+#                 print('There are no sufficient historical data of returns for phase of' + phase_name)
+#         elif phase_name == 're-acceleration':
+#             if len(re_acceleration) >= 10:
+#                 print('There are ' + str(len(re_acceleration)) + ' historical cumulative returns for bootstrap in re_acceleration phase. Please check robustness manually.')
+#                 return bootstrap(re_acceleration, periods_month, method = 'NED', condidence_interval = condidence_interval)
+#             else:
+#                 print('There are no sufficient historical data of returns for phase of' + phase_name)
+#         else:
+#             print('please check the input of phase name')
+#     else:
+#         pass
+
+def Link_Phase_Bootstrap(df, phase_number, periods_month, method = 'NED', condidence_interval = 95):
     df.index = range(len(df))
     
     def Return_Detection(df, begin_index, return_history, periods_month):
@@ -175,96 +289,26 @@ def Link_Phase_Bootstrap(df, phase_number, phase_name, periods_month, method = '
         else:
             pass
         return return_history
-            
-    if phase_number == 2:
-        expansion = []
-        contraction = []
-        for i in range(len(df)):
-            if df.phase[i] == 'expansion':
-                expansion = Return_Detection(df, i, expansion, periods_month)
-            elif df.phase[i] == 'contraction':
-                contraction = Return_Detection(df, i, contraction, periods_month)
-            else:
-                print("Something goes wrong, please have a check")
-        if phase_name == 'expansion':
-            return bootstrap(expansion, periods_month, method = method, condidence_interval = condidence_interval)
-        elif phase_name == 'contraction':
-            return bootstrap(contraction, periods_month, method = method, condidence_interval = condidence_interval)
-            print('please check the input of phase name')
-            
-    elif phase_number == 4:
-        expansion = []
-        contraction = []
-        slowdown = []
-        recovery = []
-        for i in range(len(df)):
-            if df.phase[i] == 'expansion':
-                expansion = Return_Detection(df, i, expansion, periods_month)
-            elif df.phase[i] == 'contraction':
-                contraction = Return_Detection(df, i, contraction, periods_month)
-            elif df.phase[i] == 'slowdown':
-                slowdown = Return_Detection(df, i, slowdown, periods_month)
-            elif df.phase[i] == 'recovery':
-                recovery = Return_Detection(df, i, recovery, periods_month)
-            else:
-                print("Something goes wrong, please have a check")
-        if phase_name == 'expansion':
-            return bootstrap(expansion, periods_month, method = method , condidence_interval = condidence_interval)
-        elif phase_name == 'contraction':
-            return bootstrap(contraction, periods_month, method = method, condidence_interval = condidence_interval)
-        elif phase_name == 'slowdown':
-            return bootstrap(slowdown, periods_month, method = method, condidence_interval = condidence_interval)
-        elif phase_name == 'recovery':
-            return bootstrap(recovery, periods_month, method = method, condidence_interval = condidence_interval)
-        else:
-            print('please check the input of phase name')
     
-    elif phase_number == 6:
-        expansion = []
-        contraction = []
-        slowdown = []
-        recovery = []
-        double_dip = []
-        re_acceleration = []
-        for i in range(len(df)):
-            if df.phase[i] == 'expansion':
-                expansion = Return_Detection(df, i, expansion, periods_month)
-            elif df.phase[i] == 'contraction':
-                contraction = Return_Detection(df, i, contraction, periods_month)
-            elif df.phase[i] == 'slowdown':
-                slowdown = Return_Detection(df, i, slowdown, periods_month)
-            elif df.phase[i] == 'recovery':
-                recovery = Return_Detection(df, i, recovery, periods_month)
-            elif df.phase[i] == 'double_dip':
-                double_dip = Return_Detection(df, i, double_dip, periods_month)
-            elif df.phase[i] == 're-acceleration':
-                re_acceleration = Return_Detection(df, i, re_acceleration, periods_month)
-            else:
-                print("Something goes wrong, please have a check")
-        if phase_name == 'expansion':
-            return bootstrap(expansion, periods_month, method = method, condidence_interval = condidence_interval)
-        elif phase_name == 'contraction':
-            return bootstrap(contraction, periods_month, method = method, condidence_interval = condidence_interval)
-        elif phase_name == 'slowdown':
-            return bootstrap(slowdown, periods_month, method = method, condidence_interval = condidence_interval)
-        elif phase_name == 'recovery':
-            return bootstrap(recovery, periods_month, method = method, condidence_interval = condidence_interval)
-        elif phase_name == 'double_dip':
-            if len(double_dip) >= 10:
-                print('There are ' + str(len(double_dip)) + ' historical cumulative returns for bootstrap in double_dip phase. Please check robustness manually.')
-                return bootstrap(double_dip, periods_month, method = 'NED', condidence_interval = condidence_interval)
-            else:
-                print('There are no sufficient historical data of returns for phase of' + phase_name)
-        elif phase_name == 're-acceleration':
-            if len(re_acceleration) >= 10:
-                print('There are ' + str(len(re_acceleration)) + ' historical cumulative returns for bootstrap in re_acceleration phase. Please check robustness manually.')
-                return bootstrap(re_acceleration, periods_month, method = 'NED', condidence_interval = condidence_interval)
-            else:
-                print('There are no sufficient historical data of returns for phase of' + phase_name)
+    list_phases = list(df['phase'].drop_duplicates())
+    output = dict()
+    return_phases = dict()
+    for i in range(len(list_phases)):
+        return_phases[list_phases[i]] = []
+        
+    for i in range(len(df)):
+        return_phases[df.phase[i]] = Return_Detection(df, i, return_phases[df.phase[i]], periods_month)
+
+    for i in range(len(list_phases)):
+        if len(return_phases[list_phases[i]]) >= 30:
+            output[list_phases[i]] = bootstrap(return_phases[list_phases[i]], periods_month, method = method, condidence_interval = condidence_interval)
+        elif len(return_phases[list_phases[i]]) < 30 and len(return_phases[list_phases[i]]) >= 15:
+            print('Warning: There are ' + str(len(return_phases[list_phases[i]])) + ' historical cumulative returns for bootstrap in phase of ' + list_phases[i] + '. Please check the robustness manually.')
+            output[list_phases[i]] = bootstrap(return_phases[list_phases[i]], periods_month, method = method, condidence_interval = condidence_interval)
         else:
-            print('please check the input of phase name')
-    else:
-        pass
+            print('There are no sufficient historical data of returns for phase of ' + list_phases[i])
+        
+    return output
 
 if __name__ == '__main__':
     """
@@ -295,88 +339,93 @@ if __name__ == '__main__':
     """
     #annulized returns in prediction of 24 months returns
     
-    Single_2Phase_Expansion = Link_Phase_Bootstrap(SingleInput_2Phases, 2, 'expansion', 24)
-    print('Single_2Phase_Expansion')
-    print(Single_2Phase_Expansion)
-    Single_2Phase_contraction = Link_Phase_Bootstrap(SingleInput_2Phases, 2, 'contraction', 24)
-    print('Single_2Phase_contraction')
-    print(Single_2Phase_contraction)
+    # Single_2Phase_Expansion = Link_Phase_Bootstrap(SingleInput_2Phases, 2, 'expansion', 24)
+    # print('Single_2Phase_Expansion')
+    # print(Single_2Phase_Expansion)
+    # Single_2Phase_contraction = Link_Phase_Bootstrap(SingleInput_2Phases, 2, 'contraction', 24)
+    # print('Single_2Phase_contraction')
+    # print(Single_2Phase_contraction)
 
-    Single_4Phase_Expansion = Link_Phase_Bootstrap(SingleInput_4Phases, 4, 'expansion', 24)
-    print('Single_4Phase_Expansion')
-    print(Single_4Phase_Expansion)
-    Single_4Phase_contraction = Link_Phase_Bootstrap(SingleInput_4Phases, 4, 'contraction', 24)
-    print('Single_4Phase_contraction')
-    print(Single_4Phase_contraction)
-    Single_4Phase_Slowdown = Link_Phase_Bootstrap(SingleInput_4Phases, 4, 'slowdown', 24)
-    print('Single_4Phase_Slowdown')
-    print(Single_4Phase_Slowdown)
-    Single_4Phase_Recovery = Link_Phase_Bootstrap(SingleInput_4Phases, 4, 'recovery', 24)
-    print('Single_4Phase_Recovery')
-    print(Single_4Phase_Recovery)
+    # Single_4Phase_Expansion = Link_Phase_Bootstrap(SingleInput_4Phases, 4, 'expansion', 24)
+    # print('Single_4Phase_Expansion')
+    # print(Single_4Phase_Expansion)
+    # Single_4Phase_contraction = Link_Phase_Bootstrap(SingleInput_4Phases, 4, 'contraction', 24)
+    # print('Single_4Phase_contraction')
+    # print(Single_4Phase_contraction)
+    # Single_4Phase_Slowdown = Link_Phase_Bootstrap(SingleInput_4Phases, 4, 'slowdown', 24)
+    # print('Single_4Phase_Slowdown')
+    # print(Single_4Phase_Slowdown)
+    # Single_4Phase_Recovery = Link_Phase_Bootstrap(SingleInput_4Phases, 4, 'recovery', 24)
+    # print('Single_4Phase_Recovery')
+    # print(Single_4Phase_Recovery)
     
-    Single_6Phase_Expansion = Link_Phase_Bootstrap(SingleInput_6Phases, 6, 'expansion', 24)
-    print('Single_6Phase_Expansion')
-    print(Single_6Phase_Expansion)
-    Single_6Phase_contraction = Link_Phase_Bootstrap(SingleInput_6Phases, 6, 'contraction', 24)
-    print('Single_6Phase_contraction')
-    print(Single_6Phase_contraction)
-    Single_6Phase_Slowdown = Link_Phase_Bootstrap(SingleInput_6Phases, 6, 'slowdown', 24)
-    print('Single_6Phase_Slowdown')
-    print(Single_6Phase_Slowdown)
-    Single_6Phase_Recovery = Link_Phase_Bootstrap(SingleInput_6Phases, 6, 'recovery', 24)
-    print('Single_6Phase_Recovery')
-    print(Single_6Phase_Recovery)
-    Single_6Phase_double_dip = Link_Phase_Bootstrap(SingleInput_6Phases, 6, 'double_dip', 24)
-    print('Single_6Phase_double_dip')
-    print(Single_6Phase_double_dip)
-    Single_6Phase_re_acceleration = Link_Phase_Bootstrap(SingleInput_6Phases, 6, 're-acceleration', 24)
-    print('Single_6Phase_re_acceleration')
-    print(Single_6Phase_re_acceleration)
+    # Single_6Phase_Expansion = Link_Phase_Bootstrap(SingleInput_6Phases, 6, 'expansion', 24)
+    # print('Single_6Phase_Expansion')
+    # print(Single_6Phase_Expansion)
+    # Single_6Phase_contraction = Link_Phase_Bootstrap(SingleInput_6Phases, 6, 'contraction', 24)
+    # print('Single_6Phase_contraction')
+    # print(Single_6Phase_contraction)
+    # Single_6Phase_Slowdown = Link_Phase_Bootstrap(SingleInput_6Phases, 6, 'slowdown', 24)
+    # print('Single_6Phase_Slowdown')
+    # print(Single_6Phase_Slowdown)
+    # Single_6Phase_Recovery = Link_Phase_Bootstrap(SingleInput_6Phases, 6, 'recovery', 24)
+    # print('Single_6Phase_Recovery')
+    # print(Single_6Phase_Recovery)
+    # Single_6Phase_double_dip = Link_Phase_Bootstrap(SingleInput_6Phases, 6, 'double_dip', 24)
+    # print('Single_6Phase_double_dip')
+    # print(Single_6Phase_double_dip)
+    # Single_6Phase_re_acceleration = Link_Phase_Bootstrap(SingleInput_6Phases, 6, 're-acceleration', 24)
+    # print('Single_6Phase_re_acceleration')
+    # print(Single_6Phase_re_acceleration)
 
 
-    Multiple_2Phase_Expansion = Link_Phase_Bootstrap(MultipleInput_2Phases, 2, 'expansion', 24)
-    print('Multiple_2Phase_Expansion')
-    print(Multiple_2Phase_Expansion)
-    Multiple_2Phase_contraction = Link_Phase_Bootstrap(MultipleInput_2Phases, 2, 'contraction', 24)
-    print('Multiple_2Phase_contraction')
-    print(Multiple_2Phase_contraction)
+    # Multiple_2Phase_Expansion = Link_Phase_Bootstrap(MultipleInput_2Phases, 2, 'expansion', 24)
+    # print('Multiple_2Phase_Expansion')
+    # print(Multiple_2Phase_Expansion)
+    # Multiple_2Phase_contraction = Link_Phase_Bootstrap(MultipleInput_2Phases, 2, 'contraction', 24)
+    # print('Multiple_2Phase_contraction')
+    # print(Multiple_2Phase_contraction)
 
-    Multiple_4Phase_Expansion = Link_Phase_Bootstrap(MultipleInput_4Phases, 4, 'expansion', 24)
-    print('Multiple_4Phase_Expansion')
-    print(Multiple_4Phase_Expansion)
-    Multiple_4Phase_contraction = Link_Phase_Bootstrap(MultipleInput_4Phases, 4, 'contraction', 24)
-    print('Multiple_4Phase_contraction')
-    print(Multiple_4Phase_contraction)
-    Multiple_4Phase_Slowdown = Link_Phase_Bootstrap(MultipleInput_4Phases, 4, 'slowdown', 24)
-    print('Multiple_4Phase_Slowdown')
-    print(Multiple_4Phase_Slowdown)
-    Multiple_4Phase_Recovery = Link_Phase_Bootstrap(MultipleInput_4Phases, 4, 'recovery', 24)
-    print('Multiple_4Phase_Recovery')
-    print(Multiple_4Phase_Recovery)
+    # Multiple_4Phase_Expansion = Link_Phase_Bootstrap(MultipleInput_4Phases, 4, 'expansion', 24)
+    # print('Multiple_4Phase_Expansion')
+    # print(Multiple_4Phase_Expansion)
+    # Multiple_4Phase_contraction = Link_Phase_Bootstrap(MultipleInput_4Phases, 4, 'contraction', 24)
+    # print('Multiple_4Phase_contraction')
+    # print(Multiple_4Phase_contraction)
+    # Multiple_4Phase_Slowdown = Link_Phase_Bootstrap(MultipleInput_4Phases, 4, 'slowdown', 24)
+    # print('Multiple_4Phase_Slowdown')
+    # print(Multiple_4Phase_Slowdown)
+    # Multiple_4Phase_Recovery = Link_Phase_Bootstrap(MultipleInput_4Phases, 4, 'recovery', 24)
+    # print('Multiple_4Phase_Recovery')
+    # print(Multiple_4Phase_Recovery)
     
-    Multiple_6Phase_Expansion = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 'expansion', 24)
-    print('Multiple_6Phase_Expansion')
-    print(Multiple_6Phase_Expansion)
-    Multiple_6Phase_contraction = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 'contraction', 24)
-    print('Multiple_6Phase_contraction')
-    print(Multiple_6Phase_contraction)
-    Multiple_6Phase_Slowdown = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 'slowdown', 24)
-    print('Multiple_6Phase_Slowdown')
-    print(Multiple_6Phase_Slowdown)
-    Multiple_6Phase_Recovery = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 'recovery', 24)
-    print('Multiple_6Phase_Recovery')
-    print(Multiple_6Phase_Recovery)
-    Multiple_6Phase_double_dip = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 'double_dip', 24)
-    print('Multiple_6Phase_double_dip')
-    print(Multiple_6Phase_double_dip)
-    Multiple_6Phase_re_acceleration = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 're-acceleration', 24)
-    print('Multiple_6Phase_re_acceleration')
-    print(Multiple_6Phase_re_acceleration)
+    # Multiple_6Phase_Expansion = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 'expansion', 24)
+    # print('Multiple_6Phase_Expansion')
+    # print(Multiple_6Phase_Expansion)
+    # Multiple_6Phase_contraction = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 'contraction', 24)
+    # print('Multiple_6Phase_contraction')
+    # print(Multiple_6Phase_contraction)
+    # Multiple_6Phase_Slowdown = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 'slowdown', 24)
+    # print('Multiple_6Phase_Slowdown')
+    # print(Multiple_6Phase_Slowdown)
+    # Multiple_6Phase_Recovery = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 'recovery', 24)
+    # print('Multiple_6Phase_Recovery')
+    # print(Multiple_6Phase_Recovery)
+    # Multiple_6Phase_double_dip = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 'double_dip', 24)
+    # print('Multiple_6Phase_double_dip')
+    # print(Multiple_6Phase_double_dip)
+    # Multiple_6Phase_re_acceleration = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 're-acceleration', 24)
+    # print('Multiple_6Phase_re_acceleration')
+    # print(Multiple_6Phase_re_acceleration)
 
 
+    Single_2Phase = Link_Phase_Bootstrap(SingleInput_2Phases, 2, 24)
+    Single_4Phase = Link_Phase_Bootstrap(SingleInput_4Phases, 4, 24)
+    Single_6Phase = Link_Phase_Bootstrap(SingleInput_6Phases, 6, 24)
 
-
+    Multiple_2Phase = Link_Phase_Bootstrap(MultipleInput_2Phases, 2, 24)
+    Multiple_4Phase = Link_Phase_Bootstrap(MultipleInput_4Phases, 4, 24)
+    Multiple_6Phase = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 24)
 
 
 
