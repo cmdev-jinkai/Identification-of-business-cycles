@@ -271,102 +271,52 @@ def Limit_Switches_Multiple (df):
     #     pass
     return df
 
-def Identify_Phase (df_Single, df_Multiple, Series_Type, Number_Phase):   
-    if Series_Type == 'Single': #use OECD Z-score
+def Identify_Phase (df_Single, Number_Phase):   
+
         #Initialize the data
-        df_Single = Get_Zscore_NoCap(OECD_CLI)
-        if Number_Phase == 2:
-            Phase = []
-            for i in range(len(df_Single)):
-                zscore_current = df_Single.iloc[i]['Z_Score']
-                if zscore_current >= 0:
-                    Phase.append('expansion')
-                else:
-                    Phase.append('contraction')
-            df_Single['phase'] = Phase
-            df_Single.index = range(len(df_Single))
-            df_Single = Limit_Switches_Single(df_Single)
-            return df_Single
-        elif Number_Phase == 4:
-            Phase = [np.nan]
-            for i in range(1, len(df_Single)):
-                zscore_current = df_Single.iloc[i]['Z_Score']
-                zscore_last =  df_Single.iloc[i-1]['Z_Score']
-                if zscore_current >= 0 and zscore_current >= zscore_last:
-                    Phase.append('expansion')
-                elif zscore_current >= 0 and zscore_current < zscore_last:
-                    Phase.append('slowdown')
-                elif zscore_current <= 0 and zscore_current >= zscore_last:
-                    Phase.append('recovery')
-                else:
-                    Phase.append('contraction')
-            df_Single['phase'] = Phase
-            df_Single = df_Single.dropna()
-            df_Single.index = range(len(df_Single))
-            df_Single = Limit_Switches_Single(df_Single)
-            return df_Single
-        elif Number_Phase == 6:
+    df_Single = Get_Zscore_NoCap(OECD_CLI)
+    if Number_Phase == 2:
+        Phase = []
+        for i in range(len(df_Single)):
+            zscore_current = df_Single.iloc[i]['Z_Score']
+            if zscore_current >= 0:
+                Phase.append('expansion')
+            else:
+                Phase.append('contraction')
+        df_Single['phase'] = Phase
+        df_Single.index = range(len(df_Single))
+        df_Single = Limit_Switches_Single(df_Single)
+        return df_Single
+    elif Number_Phase == 4:
+        Phase = [np.nan]
+        for i in range(1, len(df_Single)):
+            zscore_current = df_Single.iloc[i]['Z_Score']
+            zscore_last =  df_Single.iloc[i-1]['Z_Score']
+            if zscore_current >= 0 and zscore_current >= zscore_last:
+                Phase.append('expansion')
+            elif zscore_current >= 0 and zscore_current < zscore_last:
+                Phase.append('slowdown')
+            elif zscore_current <= 0 and zscore_current >= zscore_last:
+                Phase.append('recovery')
+            else:
+                Phase.append('contraction')
+        df_Single['phase'] = Phase
+        df_Single = df_Single.dropna()
+        df_Single.index = range(len(df_Single))
+        df_Single = Limit_Switches_Single(df_Single)
+        return df_Single
+    elif Number_Phase == 6:
             # switch the Z_Score to the first column to be consistent with the 6 phase function
-            df_Single['Z_Score'], df_Single['Date'] = df_Single['Date'], df_Single['Z_Score']
-            df_Single = get_cycle_phase(df_Single, model = 'MA', window = 8, thresh = 0)
+        df_Single['Z_Score'], df_Single['Date'] = df_Single['Date'], df_Single['Z_Score']
+        df_Single = get_cycle_phase(df_Single, model = 'MA', window = 8, thresh = 0)
             # swith back
-            df_Single['Z_Score'], df_Single['Date'] = df_Single['Date'], df_Single['Z_Score']
-            df_Single.index = range(len(df_Single))
-            df_Single = Limit_Switches_Single(df_Single)
-            return df_Single
-        else:
-            print('The number of phases is not included in the framework')
-    elif Series_Type == 'Multiple': # use composite Z-score
-        #Initialize the data
-        OECD_CLI_Zscore = Get_Zscore(OECD_CLI)
-        CONSSENT_Zscore = Get_Zscore(CONSSENT)
-        KCFSINDX_Zscore = Get_Zscore_Inverse(KCFSINDX)
-        UNEMPLOY_Zscore = Get_Zscore_Inverse(UNEMPLOY)
-        ISMMANU_Zscore = Get_Zscore(ISMMANU)
-        df_Multiple = Ger_Zscore_Composite(OECD_CLI_Zscore, CONSSENT_Zscore, KCFSINDX_Zscore, UNEMPLOY_Zscore, ISMMANU_Zscore)
-        if Number_Phase == 2:
-            Phase = []
-            for i in range(len(df_Multiple)):
-                zscore_current = df_Multiple.iloc[i]['Z_Composite']
-                if zscore_current >= 0:
-                    Phase.append('expansion')
-                else:
-                    Phase.append('contraction')
-            df_Multiple['phase'] = Phase
-            df_Multiple.index = range(len(df_Multiple))
-            df_Multiple = Limit_Switches_Multiple(df_Multiple)
-            return df_Multiple
-        elif Number_Phase == 4:
-            Phase = [np.nan]
-            for i in range(1, len(df_Multiple)):
-                zscore_current = df_Multiple.iloc[i]['Z_Composite']
-                zscore_last =  df_Multiple.iloc[i-1]['Z_Composite']
-                if zscore_current >= 0 and zscore_current >= zscore_last:
-                    Phase.append('expansion')
-                elif zscore_current >= 0 and zscore_current < zscore_last:
-                    Phase.append('slowdown')
-                elif zscore_current <= 0 and zscore_current > zscore_last:
-                    Phase.append('recovery')
-                else:
-                    Phase.append('contraction')
-            df_Multiple['phase'] = Phase
-            df_Multiple = df_Multiple.dropna()
-            df_Multiple.index = range(len(df_Multiple))
-            df_Multiple = Limit_Switches_Multiple(df_Multiple)
-            return df_Multiple
-        elif Number_Phase == 6:
-            # switch the Z_Composite to the first column to be consistent with the 6 phase function
-            df_Multiple['Z_Composite'], df_Multiple['Date'] = df_Multiple['Date'], df_Multiple['Z_Composite']
-            df_Multiple = get_cycle_phase(df_Multiple, model = 'MA', window = 8, thresh = 0)
-            # swith back
-            df_Multiple['Z_Composite'], df_Multiple['Date'] = df_Multiple['Date'], df_Multiple['Z_Composite']
-            df_Multiple.index = range(len(df_Multiple))
-            df_Multiple = Limit_Switches_Multiple(df_Multiple)
-            return df_Multiple
-        else:
-            print('The number of phases is not included in the framework') 
+        df_Single['Z_Score'], df_Single['Date'] = df_Single['Date'], df_Single['Z_Score']
+        df_Single.index = range(len(df_Single))
+        df_Single = Limit_Switches_Single(df_Single)
+        return df_Single
     else:
-        print('Please check the spelling of input.')
+        print('The number of phases is not included in the framework')
+    
 
 if __name__ == '__main__':
     
@@ -419,11 +369,11 @@ if __name__ == '__main__':
 
     """
 
-    SingleInput_2Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Single', 2)
+    SingleInput_2Phases = Identify_Phase(OECD_Single_Zscore, 2)
     SingleInput_2Phases.tail(20)
-    SingleInput_4Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Single', 4)
+    SingleInput_4Phases = Identify_Phase(OECD_Single_Zscore, 4)
     SingleInput_4Phases.tail(20)
-    SingleInput_6Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Single', 6)
+    SingleInput_6Phases = Identify_Phase(OECD_Single_Zscore, 6)
     SingleInput_6Phases.tail(20)
     
     # run it when to get the OECD data since 1993
