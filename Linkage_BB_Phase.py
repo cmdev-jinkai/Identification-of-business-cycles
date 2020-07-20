@@ -266,7 +266,7 @@ def Add_Return_Column(df_phase, df_return):
 #     else:
 #         pass
 
-def Link_Phase_Bootstrap(df, phase_number, periods_month, method = 'NED', condidence_interval = 95):
+def Link_Phase_Bootstrap(df, periods_month, method = 'NED', condidence_interval = 95):
     df.index = range(len(df))
     
     def Return_Detection(df, begin_index, return_history, periods_month):
@@ -420,13 +420,13 @@ if __name__ == '__main__':
     # print(Multiple_6Phase_re_acceleration)
 
 
-    Single_2Phase = Link_Phase_Bootstrap(SingleInput_2Phases, 2, 24)
-    Single_4Phase = Link_Phase_Bootstrap(SingleInput_4Phases, 4, 24)
-    Single_6Phase = Link_Phase_Bootstrap(SingleInput_6Phases, 6, 24)
+    Single_2Phase = Link_Phase_Bootstrap(SingleInput_2Phases, 24)
+    Single_4Phase = Link_Phase_Bootstrap(SingleInput_4Phases, 24)
+    Single_6Phase = Link_Phase_Bootstrap(SingleInput_6Phases, 24)
 
-    Multiple_2Phase = Link_Phase_Bootstrap(MultipleInput_2Phases, 2, 24)
-    Multiple_4Phase = Link_Phase_Bootstrap(MultipleInput_4Phases, 4, 24)
-    Multiple_6Phase = Link_Phase_Bootstrap(MultipleInput_6Phases, 6, 24)
+    Multiple_2Phase = Link_Phase_Bootstrap(MultipleInput_2Phases, 24)
+    Multiple_4Phase = Link_Phase_Bootstrap(MultipleInput_4Phases, 24)
+    Multiple_6Phase = Link_Phase_Bootstrap(MultipleInput_6Phases, 24)
 
 
 
