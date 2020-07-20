@@ -306,6 +306,7 @@ def Link_Phase_Bootstrap(df, phase_number, periods_month, method = 'NED', condid
             print('Warning: There are ' + str(len(return_phases[list_phases[i]])) + ' historical cumulative returns for bootstrap in phase of ' + list_phases[i] + '. Please check the robustness manually.')
             output[list_phases[i]] = bootstrap(return_phases[list_phases[i]], periods_month, method = method, condidence_interval = condidence_interval)
         else:
+            output[list_phases[i]] = dict()
             print('There are no sufficient historical data of returns for phase of ' + list_phases[i])
         
     return output
