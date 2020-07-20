@@ -331,14 +331,14 @@ if __name__ == '__main__':
     OECD_Single_Zscore = Get_Zscore_NoCap(OECD_CLI)
 
     #OECD Z_score in MULTIPLE input framework
-    OECD_CLI_Zscore = Get_Zscore(OECD_CLI)
-    CONSSENT_Zscore = Get_Zscore(CONSSENT)
-    #Note: financial stress index below has to be inversed in calculation of signals
-    KCFSINDX_Zscore = Get_Zscore_Inverse(KCFSINDX)
-    UNEMPLOY_Zscore = Get_Zscore_Inverse(UNEMPLOY)
-    ISMMANU_Zscore = Get_Zscore(ISMMANU)
-    #Composite Zscore: MORE SERIES TO BE ADDED
-    Composite_Zscore = Ger_Zscore_Composite(OECD_CLI_Zscore, CONSSENT_Zscore, KCFSINDX_Zscore, UNEMPLOY_Zscore, ISMMANU_Zscore)
+    # OECD_CLI_Zscore = Get_Zscore(OECD_CLI)
+    # CONSSENT_Zscore = Get_Zscore(CONSSENT)
+    # #Note: financial stress index below has to be inversed in calculation of signals
+    # KCFSINDX_Zscore = Get_Zscore_Inverse(KCFSINDX)
+    # UNEMPLOY_Zscore = Get_Zscore_Inverse(UNEMPLOY)
+    # ISMMANU_Zscore = Get_Zscore(ISMMANU)
+    # #Composite Zscore: MORE SERIES TO BE ADDED
+    # Composite_Zscore = Ger_Zscore_Composite(OECD_CLI_Zscore, CONSSENT_Zscore, KCFSINDX_Zscore, UNEMPLOY_Zscore, ISMMANU_Zscore)
    
     '''
     Correlation Matrix
@@ -383,12 +383,12 @@ if __name__ == '__main__':
 
 
     
-    MultipleInput_2Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Multiple', 2)
-    MultipleInput_2Phases.tail(20)
-    MultipleInput_4Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Multiple', 4)
-    MultipleInput_4Phases.tail(20)
-    MultipleInput_6Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Multiple', 6)
-    MultipleInput_6Phases.tail(20)
+    # MultipleInput_2Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Multiple', 2)
+    # MultipleInput_2Phases.tail(20)
+    # MultipleInput_4Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Multiple', 4)
+    # MultipleInput_4Phases.tail(20)
+    # MultipleInput_6Phases = Identify_Phase(OECD_Single_Zscore, Composite_Zscore, 'Multiple', 6)
+    # MultipleInput_6Phases.tail(20)
 
 
     # SingleInput_2Phases.to_csv('output_csv/SingleInput_2Phases.csv')
