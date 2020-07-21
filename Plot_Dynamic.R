@@ -23,9 +23,10 @@ dynamic_bubble =
   #scale_x_log10() +
   scale_color_manual(values = c("BRAZIL" = "yellow", "FRANCE" = "pink", "GERMANY" = "orange",
                                 "JAPAN" = "black", "MEXICO" = "green", "UK" = "blue", "US" = "red")) +
-  scale_size(range = c(5, 15)) +
+  scale_size(range = c(2, 20)) +
   theme_bw() +
-  labs(title = 'Year: {frame_time}', x = 'Mean of Annualized Return (%)', y = 'Standard Deviation (%)') +
+  labs(title = 'Year: {frame_time}', x = 'Mean of Annualized Return (%)', y = 'Standard Deviation (%)',
+       subtitle = "Estimated Returns Based on the Latest Phase from Seven Countries") +
   transition_time(Year) +
   ease_aes('linear')
 
