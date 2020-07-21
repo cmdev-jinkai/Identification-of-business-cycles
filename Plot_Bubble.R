@@ -1,5 +1,5 @@
 '''
-Name:Plot the (Dynamic) bubble chart for different countries
+Name:Plot the  bubble chart for different countries
 Author: Jinkai Zhang
 Date: July 21, 2020
 

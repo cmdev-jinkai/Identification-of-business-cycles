@@ -13,14 +13,14 @@ from PHASES_in_Six_JR import get_cycle_phase
 from Bootstrap import bootstrap
 from Linkage_BB_Phase import Link_Phase_Bootstrap
 
-root = "Desktop/data.p"
+root = "data.p"
     
 with open(root, 'rb') as f:
     data = pickle.load(f)
     
     
 def Get_Result_Table (data_pick):
-    country_name = ['US', 'UK', 'GERMANY', 'FRANCE', 'BRAZIL', 'MEXICO', 'JAPAN']
+    country_name = ['JAPAN', 'US', 'UK', 'GERMANY', 'FRANCE', 'BRAZIL', 'MEXICO']
     key_name = [(i + ' - Signal based (incl. 4 phases)') for i in country_name]
     estimation_year = list(np.arange(0.5 ,10.5, 0.5))
     
@@ -45,6 +45,8 @@ def Get_Result_Table (data_pick):
             mean_column.append(current_mean)
             std_column.append(current_std)
             print([i, j])
+            print(current_mean)
+            print(mean_column)
     
     output = pd.DataFrame({"Country":country_column, "Year":year_column,
                            'Mean':mean_column, 'Standard.Deviation':std_column})
@@ -53,8 +55,6 @@ def Get_Result_Table (data_pick):
 returns_panel = Get_Result_Table(data)
 
 returns_panel.to_csv('returns_panel.csv')
-
-
 
 
 
