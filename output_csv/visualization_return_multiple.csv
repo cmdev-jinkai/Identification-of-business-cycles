@@ -1,0 +1,159 @@
+Country,Method,Phase,Mean(%),Median(%),Standard Deviation(%)
+MEXICO,RS-Markov (incl. 6 phases),phase 6,31.96%,31.96%,13.87%
+MEXICO,RS-Markov (incl. 4 phases),phase 4,31.46%,31.46%,13.66%
+MEXICO,Wavelets (incl. 4 phases),recovery,27.31%,27.31%,10.47%
+MEXICO,Signal based (incl. 6 phases),contraction,23.47%,23.47%,12.07%
+MEXICO,Wavelets (incl. 4 phases),contraction,20.12%,20.12%,13.12%
+BRAZIL,Signal based (incl. 6 phases),slowdown,19.94%,19.94%,17.70%
+MEXICO,RS-Markov (incl. 2 phases),phase 2,19.64%,19.64%,13.56%
+MEXICO,Signal based (incl. 6 phases),expansion,19.42%,19.42%,12.83%
+BRAZIL,Wavelets (incl. 4 phases),contraction,18.74%,18.74%,13.86%
+MEXICO,RS-Markov (incl. 4 phases),phase 3,18.53%,18.53%,12.99%
+MEXICO,RS-Markov (incl. 6 phases),phase 5,18.11%,18.11%,13.09%
+BRAZIL,RS-Markov (incl. 4 phases),phase 4,17.83%,17.83%,16.56%
+MEXICO,Wavelets (incl. 4 phases),expansion,17.73%,17.73%,17.71%
+BRAZIL,RS-Markov (incl. 6 phases),phase 6,17.10%,17.10%,16.57%
+US,RS-Markov (incl. 4 phases),phase 1,16.93%,16.93%,5.05%
+BRAZIL,Wavelets (incl. 4 phases),recovery,16.78%,16.78%,7.82%
+BRAZIL,Signal based (incl. 4 phases),recovery,16.46%,16.46%,14.25%
+BRAZIL,RS-Markov (incl. 2 phases),phase 2,16.07%,16.08%,15.86%
+MEXICO,Signal based (incl. 4 phases),slowdown,16.05%,16.05%,12.30%
+US,Wavelets (incl. 4 phases),contraction,15.87%,15.87%,7.33%
+BRAZIL,Signal based (incl. 2 phases),contraction,15.76%,15.76%,15.86%
+MEXICO,Signal based (incl. 4 phases),expansion,15.51%,15.51%,14.11%
+MEXICO,Signal based (incl. 2 phases),expansion,15.29%,15.29%,13.11%
+BRAZIL,Signal based (incl. 4 phases),contraction,15.00%,15.00%,17.43%
+MEXICO,RS-Markov (incl. 6 phases),phase 2,14.99%,14.99%,12.76%
+BRAZIL,RS-Markov (incl. 4 phases),phase 3,14.66%,14.66%,7.88%
+MEXICO,RS-Markov (incl. 4 phases),phase 2,14.35%,14.35%,12.79%
+BRAZIL,Signal based (incl. 6 phases),contraction,13.73%,13.73%,10.23%
+US,RS-Markov (incl. 6 phases),phase 1,13.23%,13.23%,5.84%
+US,Signal based (incl. 6 phases),slowdown,12.81%,12.81%,9.71%
+FRANCE,Signal based (incl. 6 phases),expansion,12.69%,12.69%,11.24%
+GERMANY,Wavelets (incl. 4 phases),recovery,12.64%,12.64%,6.82%
+BRAZIL,Wavelets (incl. 4 phases),expansion,12.58%,12.58%,14.86%
+US,Signal based (incl. 4 phases),expansion,12.42%,12.42%,7.93%
+GERMANY,RS-Markov (incl. 4 phases),phase 1,12.40%,12.40%,6.89%
+GERMANY,Signal based (incl. 6 phases),recovery,12.31%,12.31%,7.49%
+US,RS-Markov (incl. 4 phases),phase 3,12.12%,12.12%,10.65%
+BRAZIL,Wavelets (incl. 4 phases),slowdown,12.04%,12.04%,16.35%
+BRAZIL,Signal based (incl. 6 phases),double_dip,12.02%,12.02%,17.20%
+US,Signal based (incl. 6 phases),expansion,11.93%,11.93%,7.75%
+GERMANY,Signal based (incl. 4 phases),recovery,11.85%,11.85%,12.08%
+BRAZIL,Signal based (incl. 6 phases),recovery,11.85%,11.85%,14.14%
+BRAZIL,Signal based (incl. 4 phases),expansion,11.58%,11.58%,14.40%
+MEXICO,Signal based (incl. 4 phases),recovery,11.51%,11.51%,14.45%
+MEXICO,Signal based (incl. 2 phases),contraction,11.35%,11.35%,13.82%
+US,Signal based (incl. 2 phases),expansion,11.29%,11.29%,8.80%
+GERMANY,Signal based (incl. 6 phases),contraction,11.25%,11.25%,13.99%
+MEXICO,Signal based (incl. 6 phases),slowdown,11.16%,11.16%,15.99%
+MEXICO,Signal based (incl. 6 phases),recovery,11.04%,11.04%,11.69%
+US,RS-Markov (incl. 6 phases),phase 5,10.89%,10.89%,17.06%
+US,Wavelets (incl. 4 phases),slowdown,10.42%,10.42%,12.82%
+US,Signal based (incl. 4 phases),slowdown,10.38%,10.38%,9.39%
+MEXICO,Signal based (incl. 4 phases),contraction,10.09%,10.09%,12.59%
+GERMANY,RS-Markov (incl. 6 phases),phase 1,10.04%,10.04%,7.94%
+GERMANY,Signal based (incl. 6 phases),expansion,9.87%,9.87%,7.55%
+MEXICO,Wavelets (incl. 4 phases),slowdown,9.81%,9.81%,12.55%
+BRAZIL,Signal based (incl. 2 phases),expansion,9.73%,9.73%,14.15%
+GERMANY,RS-Markov (incl. 2 phases),phase 1,9.62%,9.62%,9.12%
+US,RS-Markov (incl. 2 phases),phase 1,9.55%,9.55%,8.32%
+GERMANY,Wavelets (incl. 4 phases),expansion,9.47%,9.47%,11.78%
+MEXICO,RS-Markov (incl. 2 phases),phase 1,9.38%,9.38%,12.68%
+GERMANY,Wavelets (incl. 4 phases),contraction,9.37%,9.37%,10.19%
+UK,Signal based (incl. 6 phases),re-acceleration,8.85%,8.85%,8.39%
+FRANCE,Signal based (incl. 6 phases),recovery,8.81%,8.81%,9.79%
+GERMANY,Signal based (incl. 2 phases),contraction,8.73%,8.73%,15.12%
+FRANCE,RS-Markov (incl. 2 phases),phase 1,8.72%,8.72%,7.90%
+FRANCE,RS-Markov (incl. 4 phases),phase 2,8.58%,8.58%,17.06%
+BRAZIL,RS-Markov (incl. 2 phases),phase 1,8.26%,8.26%,13.20%
+JAPAN,RS-Markov (incl. 6 phases),phase 5,8.25%,8.25%,15.96%
+JAPAN,Signal based (incl. 6 phases),re-acceleration,8.20%,8.20%,9.65%
+US,RS-Markov (incl. 6 phases),phase 2,8.18%,8.19%,3.95%
+US,RS-Markov (incl. 2 phases),phase 2,8.15%,8.15%,12.89%
+FRANCE,Signal based (incl. 4 phases),slowdown,7.98%,7.98%,15.09%
+BRAZIL,Signal based (incl. 4 phases),slowdown,7.84%,7.84%,13.48%
+BRAZIL,RS-Markov (incl. 6 phases),phase 5,7.78%,7.78%,10.05%
+US,Signal based (incl. 6 phases),recovery,7.62%,7.62%,10.73%
+FRANCE,Signal based (incl. 2 phases),expansion,7.56%,7.56%,13.82%
+JAPAN,RS-Markov (incl. 4 phases),phase 4,7.38%,7.38%,15.86%
+GERMANY,RS-Markov (incl. 4 phases),phase 2,7.35%,7.35%,9.18%
+FRANCE,RS-Markov (incl. 6 phases),phase 1,7.26%,7.26%,6.86%
+FRANCE,Wavelets (incl. 4 phases),expansion,7.24%,7.24%,13.60%
+FRANCE,Signal based (incl. 4 phases),recovery,7.12%,7.12%,13.01%
+FRANCE,Signal based (incl. 4 phases),expansion,7.09%,7.09%,12.27%
+FRANCE,RS-Markov (incl. 6 phases),phase 5,7.09%,7.09%,18.44%
+UK,RS-Markov (incl. 4 phases),phase 4,6.99%,6.99%,11.91%
+FRANCE,Wavelets (incl. 4 phases),slowdown,6.98%,6.98%,16.49%
+UK,Signal based (incl. 4 phases),expansion,6.92%,6.92%,8.36%
+UK,RS-Markov (incl. 2 phases),phase 2,6.78%,6.78%,10.19%
+JAPAN,Signal based (incl. 4 phases),recovery,6.69%,6.69%,12.59%
+FRANCE,Signal based (incl. 6 phases),contraction,6.63%,6.63%,17.35%
+UK,Signal based (incl. 6 phases),double_dip,6.58%,6.58%,11.75%
+UK,Wavelets (incl. 4 phases),expansion,6.49%,6.49%,9.52%
+US,Signal based (incl. 4 phases),recovery,6.43%,6.43%,14.08%
+GERMANY,Signal based (incl. 4 phases),contraction,6.37%,6.37%,16.63%
+UK,RS-Markov (incl. 6 phases),phase 5,6.21%,6.21%,11.99%
+FRANCE,Signal based (incl. 2 phases),contraction,6.20%,6.20%,16.88%
+FRANCE,RS-Markov (incl. 2 phases),phase 2,6.17%,6.17%,17.70%
+GERMANY,RS-Markov (incl. 6 phases),phase 5,6.14%,6.14%,14.57%
+UK,Signal based (incl. 2 phases),expansion,5.97%,5.97%,9.09%
+FRANCE,Signal based (incl. 6 phases),slowdown,5.91%,5.91%,19.06%
+JAPAN,Signal based (incl. 6 phases),slowdown,5.72%,5.72%,14.54%
+US,Signal based (incl. 2 phases),contraction,5.69%,5.69%,14.23%
+US,Wavelets (incl. 4 phases),expansion,5.57%,5.57%,9.60%
+JAPAN,Signal based (incl. 4 phases),expansion,5.49%,5.49%,14.71%
+UK,Signal based (incl. 6 phases),slowdown,5.41%,5.41%,11.68%
+FRANCE,Signal based (incl. 4 phases),contraction,5.35%,5.35%,19.70%
+BRAZIL,Signal based (incl. 6 phases),expansion,5.31%,5.31%,11.41%
+FRANCE,RS-Markov (incl. 4 phases),phase 1,5.18%,5.18%,10.33%
+UK,Signal based (incl. 4 phases),slowdown,5.17%,5.17%,9.97%
+JAPAN,Wavelets (incl. 4 phases),contraction,5.14%,5.13%,12.59%
+GERMANY,Signal based (incl. 4 phases),expansion,5.10%,5.10%,12.22%
+GERMANY,RS-Markov (incl. 4 phases),phase 3,5.07%,5.07%,17.09%
+UK,RS-Markov (incl. 4 phases),phase 2,4.91%,4.91%,9.24%
+GERMANY,Signal based (incl. 2 phases),expansion,4.77%,4.77%,13.67%
+US,Signal based (incl. 4 phases),contraction,4.58%,4.58%,14.43%
+JAPAN,RS-Markov (incl. 2 phases),phase 1,4.32%,4.32%,15.93%
+UK,Signal based (incl. 6 phases),expansion,4.05%,4.05%,10.30%
+US,Signal based (incl. 6 phases),re-acceleration,3.79%,3.79%,10.23%
+JAPAN,Wavelets (incl. 4 phases),recovery,3.69%,3.69%,11.12%
+US,RS-Markov (incl. 6 phases),phase 3,3.65%,3.65%,12.39%
+UK,RS-Markov (incl. 6 phases),phase 1,3.60%,3.60%,5.70%
+GERMANY,RS-Markov (incl. 2 phases),phase 2,3.60%,3.60%,17.07%
+GERMANY,Signal based (incl. 4 phases),slowdown,3.51%,3.51%,15.69%
+UK,Signal based (incl. 2 phases),contraction,3.19%,3.19%,12.26%
+GERMANY,Wavelets (incl. 4 phases),slowdown,3.19%,3.19%,15.37%
+JAPAN,Signal based (incl. 6 phases),contraction,3.19%,3.19%,14.22%
+JAPAN,Signal based (incl. 2 phases),contraction,3.14%,3.14%,13.98%
+FRANCE,Wavelets (incl. 4 phases),recovery,3.07%,3.07%,6.46%
+UK,Signal based (incl. 4 phases),recovery,2.93%,2.93%,12.88%
+UK,Wavelets (incl. 4 phases),slowdown,2.81%,2.81%,11.13%
+UK,Signal based (incl. 4 phases),contraction,2.71%,2.71%,11.51%
+UK,Signal based (incl. 6 phases),recovery,2.42%,2.42%,8.57%
+US,RS-Markov (incl. 4 phases),phase 2,2.38%,2.38%,10.85%
+MEXICO,Signal based (incl. 6 phases),double_dip,2.29%,2.29%,6.42%
+JAPAN,RS-Markov (incl. 4 phases),phase 2,1.80%,1.80%,11.78%
+JAPAN,RS-Markov (incl. 6 phases),phase 2,1.71%,1.71%,11.34%
+JAPAN,Wavelets (incl. 4 phases),expansion,1.69%,1.69%,16.63%
+UK,Signal based (incl. 6 phases),contraction,1.57%,1.57%,12.99%
+GERMANY,Signal based (incl. 6 phases),re-acceleration,1.57%,1.57%,11.94%
+JAPAN,Signal based (incl. 2 phases),expansion,1.42%,1.42%,15.77%
+UK,RS-Markov (incl. 2 phases),phase 1,1.13%,1.13%,10.64%
+MEXICO,RS-Markov (incl. 4 phases),phase 1,1.03%,1.03%,5.14%
+MEXICO,RS-Markov (incl. 6 phases),phase 1,1.03%,1.03%,5.14%
+GERMANY,Signal based (incl. 6 phases),slowdown,0.87%,0.87%,18.65%
+JAPAN,RS-Markov (incl. 2 phases),phase 2,0.51%,0.51%,13.50%
+JAPAN,Signal based (incl. 6 phases),expansion,0.48%,0.48%,15.85%
+UK,RS-Markov (incl. 4 phases),phase 1,0.42%,0.42%,6.56%
+BRAZIL,RS-Markov (incl. 4 phases),phase 1,0.15%,0.15%,5.36%
+BRAZIL,RS-Markov (incl. 6 phases),phase 1,0.04%,0.04%,3.74%
+JAPAN,Signal based (incl. 4 phases),contraction,-0.26%,-0.26%,14.54%
+US,Signal based (incl. 6 phases),contraction,-0.45%,-0.45%,16.80%
+JAPAN,Signal based (incl. 6 phases),recovery,-0.77%,-0.77%,15.52%
+JAPAN,Wavelets (incl. 4 phases),slowdown,-0.92%,-0.92%,13.53%
+JAPAN,RS-Markov (incl. 4 phases),phase 1,-1.01%,-1.01%,15.11%
+JAPAN,RS-Markov (incl. 6 phases),phase 1,-1.86%,-1.86%,15.17%
+JAPAN,Signal based (incl. 4 phases),slowdown,-2.79%,-2.79%,15.64%
+FRANCE,Signal based (incl. 6 phases),re-acceleration,-5.70%,-5.70%,9.22%
+JAPAN,Signal based (incl. 6 phases),double_dip,-11.19%,-11.19%,12.12%
