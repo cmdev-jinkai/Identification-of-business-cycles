@@ -28,39 +28,63 @@ MultipleInput_4Phases = MultipleInput_4Phases[, c(2,8,9)]
 MultipleInput_6Phases = MultipleInput_6Phases[, c(2,8,11)]
 
 #Single Input
-ggplot(SingleInput_2Phases, aes(as.Date(Date, format = "%Y-%m-%d"), Z_Score, colour = phase)) + 
+SingleInput_2phase = ggplot(SingleInput_2Phases, aes(as.Date(Date, format = "%Y-%m-%d"), Z_Score, colour = phase)) + 
   geom_line(aes(group = 1)) +
   labs(title = "Phase Identification in Two using OECD input (1964-2020)") +
   scale_x_date(labels = date_format("%m-%Y")) + 
-  labs(x = "Month")
+  labs(x = "Month") +
+  theme_bw() +
+  scale_color_manual(values=c("red", "blue"))
 
-ggplot(SingleInput_4Phases, aes(as.Date(Date, format = "%Y-%m-%d"), Z_Score, colour = phase)) + 
+ggsave("output_jpg/visualization_phase//SingleInput_2phase.png")
+
+SingleInput_4phase = ggplot(SingleInput_4Phases, aes(as.Date(Date, format = "%Y-%m-%d"), Z_Score, colour = phase)) + 
   geom_line(aes(group = 1)) +
   labs(title = "Phase Identification in Four using OECD input (1964-2020)") +
   scale_x_date(labels = date_format("%m-%Y")) + 
-  labs(x = "Month")
+  labs(x = "Month") +
+  theme_bw() +
+  scale_color_manual(values=c("red", "blue", "green", "black"))
 
-ggplot(SingleInput_6Phases, aes(as.Date(Date, format = "%Y-%m-%d"), Z_Score, colour = phase)) + 
+ggsave("output_jpg/visualization_phase//SingleInput_4phase.png")
+
+
+SingleInput_6phase = ggplot(SingleInput_6Phases, aes(as.Date(Date, format = "%Y-%m-%d"), Z_Score, colour = phase)) + 
   geom_line(aes(group = 1)) +
   labs(title = "Phase Identification in Six using OECD input (1964-2020)") +
   scale_x_date(labels = date_format("%m-%Y")) + 
-  labs(x = "Month")
+  labs(x = "Month") +
+  theme_bw() +
+  scale_color_manual(values=c("red", "blue", "green", "black", "pink", "yellow"))
 
+ggsave("output_jpg/visualization_phase//SingleInput_6phase.png")
 #Multiple inputs
-ggplot(MultipleInput_2Phases, aes(as.Date(Date, format = "%Y-%m-%d"), Z_Composite, colour = phase)) + 
+MultipleInput_2phase = ggplot(MultipleInput_2Phases, aes(as.Date(Date, format = "%Y-%m-%d"), Z_Composite, colour = phase)) + 
   geom_line(aes(group = 1)) +
   labs(title = "Phase Identification in Two using multiple inputs (1993-2020)") +
   scale_x_date(labels = date_format("%m-%Y")) + 
-  labs(x = "Month")
+  labs(x = "Month")+
+  theme_bw() +
+  scale_color_manual(values=c("red", "blue"))
 
-ggplot(MultipleInput_4Phases, aes(as.Date(Date, format = "%Y-%m-%d"), Z_Composite, colour = phase)) + 
+ggsave("output_jpg/visualization_phase//MultipleInput_2phase.png")
+
+MultipleInput_4phase = ggplot(MultipleInput_4Phases, aes(as.Date(Date, format = "%Y-%m-%d"), Z_Composite, colour = phase)) + 
   geom_line(aes(group = 1)) +
   labs(title = "Phase Identification in Four using multiple inputs (1993-2020)") +
   scale_x_date(labels = date_format("%m-%Y")) + 
-  labs(x = "Month")
+  labs(x = "Month") +
+  theme_bw() +
+  scale_color_manual(values=c("red", "blue", "green", "black"))
 
-ggplot(MultipleInput_6Phases, aes(as.Date(Date, format = "%Y-%m-%d"), Z_Composite, colour = phase)) + 
+ggsave("output_jpg/visualization_phase//MultipleInput_4phase.png")
+
+MultipleInput_6phase = ggplot(MultipleInput_6Phases, aes(as.Date(Date, format = "%Y-%m-%d"), Z_Composite, colour = phase)) + 
   geom_line(aes(group = 1)) +
   labs(title = "Phase Identification in Six using multiple inputs (1993-2020)") +
   scale_x_date(labels = date_format("%m-%Y")) + 
-  labs(x = "Month")
+  labs(x = "Month") +
+  theme_bw() +
+  scale_color_manual(values=c("red", "blue", "black", "pink", "blue", "yellow"))
+
+ggsave("output_jpg/visualization_phase//MultipleInput_6phase.png")

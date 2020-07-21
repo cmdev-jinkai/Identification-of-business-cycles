@@ -1,0 +1,24 @@
+Method,Phase,Mean
+RS-Markov (incl. 2 phases),phase 1,0.0955
+RS-Markov (incl. 2 phases),phase 2,0.0815
+RS-Markov (incl. 4 phases),phase 1,0.1693
+RS-Markov (incl. 4 phases),phase 2,0.0238
+RS-Markov (incl. 4 phases),phase 3,0.1212
+RS-Markov (incl. 6 phases),phase 1,0.1323
+RS-Markov (incl. 6 phases),phase 2,0.0818
+RS-Markov (incl. 6 phases),phase 3,0.0365
+RS-Markov (incl. 6 phases),phase 5,0.1089
+Signal based (incl. 2 phases),contraction,0.0569
+Signal based (incl. 2 phases),expansion,0.1129
+Signal based (incl. 4 phases),contraction,0.0457
+Signal based (incl. 4 phases),expansion,0.1242
+Signal based (incl. 4 phases),recovery,0.0643
+Signal based (incl. 4 phases),slowdown,0.1038
+Signal based (incl. 6 phases),contraction,-0.0045
+Signal based (incl. 6 phases),expansion,0.1193
+Signal based (incl. 6 phases),re-acceleration,0.0379
+Signal based (incl. 6 phases),recovery,0.0763
+Signal based (incl. 6 phases),slowdown,0.1281
+Wavelets (incl. 4 phases),contraction,0.1587
+Wavelets (incl. 4 phases),expansion,0.0557
+Wavelets (incl. 4 phases),slowdown,0.1042
