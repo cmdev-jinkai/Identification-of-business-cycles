@@ -116,7 +116,7 @@ recovery_figure =
 
 all_phase_figure =
   multiplot(expansion_figure, slowdown_figure, contraction_figure, recovery_figure, cols = 2)
-ggsave("output_jpg/visualization_bubble//all_phase_figure.png")
+
 
 
 # Multiple plot function
