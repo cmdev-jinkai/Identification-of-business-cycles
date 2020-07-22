@@ -18,14 +18,14 @@ returns_panel = subset(returns_panel, returns_panel$Year >= 2)
 
 
 dynamic_bubble = 
-  ggplot(returns_panel, aes(Mean, Standard.Deviation, size = Sharp.Ratio, color = Country)) +
+  ggplot(returns_panel, aes(Standard.Deviation, Mean, size = Sharp.Ratio, color = Country)) +
   geom_point() +
   #scale_x_log10() +
   scale_color_manual(values = c("BRAZIL" = "yellow", "FRANCE" = "pink", "GERMANY" = "orange",
                                 "JAPAN" = "black", "MEXICO" = "green", "UK" = "blue", "US" = "red")) +
   scale_size(range = c(2, 20)) +
   theme_bw() +
-  labs(title = 'Year: {frame_time}', x = 'Mean of Annualized Return (%)', y = 'Standard Deviation (%)',
+  labs(title = 'Year: {frame_time}', x = 'Standard Deviation (%)',  y = 'Mean of Annualized Return (%)',
        subtitle = "Estimated Returns Based on the Latest Phase from Seven Countries") +
   transition_time(Year) +
   ease_aes('linear')
