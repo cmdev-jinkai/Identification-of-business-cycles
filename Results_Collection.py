@@ -17,8 +17,10 @@ root = "data.p"
     
 with open(root, 'rb') as f:
     data = pickle.load(f)
-    
-    
+
+data.keys()
+data['UK - Signal based (incl. 4 phases)']
+
 def Get_Result_Table (data_pick):
     country_name = ['JAPAN', 'US', 'UK', 'GERMANY', 'FRANCE', 'BRAZIL', 'MEXICO']
     key_name = [(i + ' - Signal based (incl. 4 phases)') for i in country_name]
