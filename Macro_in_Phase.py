@@ -133,10 +133,14 @@ def Reform_Data_Macro (data_all, data_old):
         df['phase_GDP'] = phase_GDP
         df['phase_INFLATION'] = phase_INFLATION
         df['phase'] = phase
+        df['Date'] = df.index
         data_new[key] = df
     return data_new
 
 data_new = Reform_Data_Macro (data_all, data_old)
+
+data_new['US - Macro based'].to_csv("output_macro_csv/US_macro.csv")
+
 
 Link_Phase_Bootstrap(data_new['US - Macro based'], 12)
 
