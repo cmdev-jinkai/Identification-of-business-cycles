@@ -139,8 +139,136 @@ def Reform_Data_Macro (data_all, data_old):
 
 data_new = Reform_Data_Macro (data_all, data_old)
 
-data_new['US - Macro based'].to_csv("output_macro_csv/US_macro.csv")
 
+def Quantile_Phase_GDP (data_new):
+    for key, df in data_new.items():
+        df = df.drop(['APINFLATION', 'phase_GDP', 'phase_INFLATION', 'phase'], axis = 1)
+        phase = []
+        order = []
+        no1, no2, no3 = np.quantile(df.APRGDP, 1/7), np.quantile(df.APRGDP, 2/7), np.quantile(df.APRGDP, 3/7)
+        no4, no5, no6 = np.quantile(df.APRGDP, 4/7), np.quantile(df.APRGDP, 5/7), np.quantile(df.APRGDP, 6/7)
+        for i in range(len(df)):
+            value = df.APRGDP[i]
+            if value <= no1:
+                phase.append('Below ' + str(round(no1, 1)) + '%')
+                order.append(1)
+            elif value > no1 and value <= no2:
+                phase.append(str(round(no1, 1)) + '%' + ' to ' + str(round(no2, 1)) + '%')
+                order.append(2)
+            elif value > no2 and value <= no3:
+                phase.append(str(round(no2, 1)) + '%' + ' to ' + str(round(no3, 1)) + '%')
+                order.append(3)
+            elif value > no3 and value <= no4:
+                phase.append(str(round(no3, 1)) + '%' + ' to ' + str(round(no4, 1)) + '%')
+                order.append(4)
+            elif value > no4 and value <= no5:
+                phase.append(str(round(no4, 1)) + '%' + ' to ' + str(round(no5, 1)) + '%')
+                order.append(5)
+            elif value > no5 and value <= no6:
+                phase.append(str(round(no5, 1)) + '%' + ' to ' + str(round(no6, 1)) + '%')
+                order.append(6)
+            elif value > no6:
+                phase.append('Above ' + str(round(no6, 1)) + '%')
+                order.append(7)
+            else:
+                pass
+        df['phase'] = phase
+        df['order'] = order
+        data_new[key] = df
+    return data_new
+
+data_gdp = Quantile_Phase_GDP (data_new)
+data_new = Reform_Data_Macro (data_all, data_old)
+
+def Quantile_Phase_INFLATION (data_new):
+    for key, df in data_new.items():
+        df = df.drop(['APRGDP', 'phase_GDP', 'phase_INFLATION', 'phase'], axis = 1)
+        phase = []
+        order = []
+        no1, no2, no3 = np.quantile(df.APINFLATION, 1/7), np.quantile(df.APINFLATION, 2/7), np.quantile(df.APINFLATION, 3/7)
+        no4, no5, no6 = np.quantile(df.APINFLATION, 4/7), np.quantile(df.APINFLATION, 5/7), np.quantile(df.APINFLATION, 6/7)
+        for i in range(len(df)):
+            value = df.APINFLATION[i]
+            if value <= no1:
+                phase.append('Below ' + str(round(no1, 1)) + '%')
+                order.append(1)
+            elif value > no1 and value <= no2:
+                phase.append(str(round(no1, 1)) + '%' + ' to ' + str(round(no2, 1)) + '%')
+                order.append(2)
+            elif value > no2 and value <= no3:
+                phase.append(str(round(no2, 1)) + '%' + ' to ' + str(round(no3, 1)) + '%')
+                order.append(3)
+            elif value > no3 and value <= no4:
+                phase.append(str(round(no3, 1)) + '%' + ' to ' + str(round(no4, 1)) + '%')
+                order.append(4)
+            elif value > no4 and value <= no5:
+                phase.append(str(round(no4, 1)) + '%' + ' to ' + str(round(no5, 1)) + '%')
+                order.append(5)
+            elif value > no5 and value <= no6:
+                phase.append(str(round(no5, 1)) + '%' + ' to ' + str(round(no6, 1)) + '%')
+                order.append(6)
+            elif value > no6:
+                phase.append('Above ' + str(round(no6, 1)) + '%')
+                order.append(7)
+            else:
+                pass
+        df['phase'] = phase
+        df['order'] = order
+        data_new[key] = df
+    return data_new
+
+data_inflation= Quantile_Phase_INFLATION (data_new)
+data_new = Reform_Data_Macro (data_all, data_old)
+
+
+def Get_Univariate_Comparison (data_gdp, data_inflation):
+    country_name = ['JAPAN', 'US', 'UK', 'GERMANY', 'FRANCE', 'BRAZIL', 'MEXICO']
+    key_name = [(i + ' - Macro based') for i in country_name]
+    country_column = []
+    phase_gdp = []
+    phase_inflation = []
+    mean_column_gdp = []
+    std_column_gdp = []
+    phase_inflation = []
+    mean_column_inflation = []
+    std_column_inflation = []
+    for i in range(len(country_name)):
+        df_gdp = data_gdp[key_name[i]]
+        df_inflation = data_inflation[key_name[i]]
+        phase_gdp_list = list(df_gdp.sort_values(by=['order'])['phase'].drop_duplicates())
+        phase_inflation_list = list(df_inflation.sort_values(by=['order'])['phase'].drop_duplicates())
+        results_all = Link_Phase_Bootstrap(df_gdp, 12)
+        for j in range(len(phase_gdp_list)):
+            current_phase = phase_gdp_list[j]
+            country_column.append(country_name[i])
+            phase_gdp.append(current_phase)
+            result_phase = results_all[current_phase]
+            current_mean = result_phase['Mean(%)']
+            current_std = result_phase['Standard Deviation(%)']
+            mean_column_gdp.append(current_mean)
+            std_column_gdp.append(current_std)
+            print([i, j])
+            print(current_mean)
+        results_all = Link_Phase_Bootstrap(df_inflation, 12)
+        for j in range(len(phase_inflation_list)):
+            current_phase = phase_inflation_list[j]
+            phase_inflation.append(current_phase)
+            result_phase = results_all[current_phase]
+            current_mean = result_phase['Mean(%)']
+            current_std = result_phase['Standard Deviation(%)']
+            mean_column_gdp.append(current_mean)
+            std_column_gdp.append(current_std)
+            print([i, j])
+            print(current_mean)
+    output = pd.DataFrame({"Country":country_column, "phase_gdp":phase_gdp,
+                           'Mean_GDP':mean_column_gdp, 'Standard.Deviation_GDP':std_column_gdp, "phase_inflation":phase_inflation,
+                           'Mean_INFLATION':mean_column_inflation, 'Standard.Deviation_INFLATION':std_column_inflation})
+    return output
+
+result_univariate = Get_Univariate_Comparison (data_gdp, data_inflation)
+
+np.quantile(data_new['US - Macro based'].APINFLATION, 3/7)
+data_new['US - Macro based'].columns
 
 Link_Phase_Bootstrap(data_new['US - Macro based'], 12)
 
@@ -153,6 +281,9 @@ a = data_all['BRAZIL Real GDP']
 a.Return[1]
 a.keys()
 list(a.values())
+
+data_inflation['US - Macro based'].sort_values(by=['order'])
+list(data_inflation['US - Macro based'].sort_values(by=['order'])['phase'].drop_duplicates())
 
 
 b = pd.DataFrame({"Date" : list(a.keys()), "RGDP":list(a.values())})
