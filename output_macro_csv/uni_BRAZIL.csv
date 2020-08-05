@@ -1,0 +1,15 @@
+Country,phase_gdp,GDP,phase_inflation,Inflation,Value
+BRAZIL, Below -3.0%,24.3049, Below 2.2%,11.1817,Mean
+BRAZIL,-3.0% to 0.0%,13.9558,2.2% to 3.4%,16.2757,Mean
+BRAZIL,0.0% to 1.7%,1.2773,3.4% to 4.9%,20.3268,Mean
+BRAZIL,1.7% to 3.7%,10.3138,4.9% to 5.9%,13.6501,Mean
+BRAZIL,3.7% to 5.3%,16.7067,5.9% to 7.1%,4.6149,Mean
+BRAZIL,5.3% to 7.1%,9.0078,7.1% to 9.5%,4.9547,Mean
+BRAZIL,Above 7.1%,10.5763,Above 9.5%,15.5073,Mean
+BRAZIL, Below -3.0%,0.874906407, Below 2.2%,0.563772771,Sharp.Ratio
+BRAZIL,-3.0% to 0.0%,0.795515046,2.2% to 3.4%,0.782079497,Sharp.Ratio
+BRAZIL,0.0% to 1.7%,0.103783933,3.4% to 4.9%,0.776967858,Sharp.Ratio
+BRAZIL,1.7% to 3.7%,0.574351378,4.9% to 5.9%,0.586727588,Sharp.Ratio
+BRAZIL,3.7% to 5.3%,0.627465193,5.9% to 7.1%,0.186105689,Sharp.Ratio
+BRAZIL,5.3% to 7.1%,0.345109247,7.1% to 9.5%,0.236923018,Sharp.Ratio
+BRAZIL,Above 7.1%,0.367360195,Above 9.5%,0.554440047,Sharp.Ratio

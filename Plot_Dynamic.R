@@ -14,7 +14,7 @@ library(gifski)
 returns_panel = read.csv('output_csv/returns_panel.csv')
 
 returns_panel = data.frame(returns_panel, Sharp.Ratio = returns_panel$Mean / returns_panel$Standard.Deviation)
-returns_panel = subset(returns_panel, returns_panel$Year >= 2)
+returns_panel = subset(returns_panel, returns_panel$Year >= 1 & returns_panel$Year <= 7  )
 
 
 dynamic_bubble = 

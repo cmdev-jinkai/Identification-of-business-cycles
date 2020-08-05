@@ -12,13 +12,36 @@ from datetime import datetime
 from PHASES_in_Six_JR import get_cycle_phase
 from Bootstrap import bootstrap
 from Linkage_BB_Phase import Link_Phase_Bootstrap
+from collections import Counter
 
-root = "data.p"
+root = "timeseries.p"
     
 with open(root, 'rb') as f:
     data = pickle.load(f)
-    
-    
+
+data.keys()
+data['UK - Signal based (incl. 4 phases)']
+data['UK - Wavelets (incl. 4 phases)'].head(10)
+
+Counter(data['UK - Wavelets (incl. 4 phases)'].phase)
+Counter(data['US - Wavelets (incl. 4 phases)'].phase)
+
+Counter(data['UK - RS-Markov (incl. 4 phases)'].phase)
+Counter(data['US - RS-Markov (incl. 4 phases)'].phase)
+
+root2 = "duration.p"
+with open(root2, 'rb') as f:
+    data2 = pickle.load(f)
+
+data2.keys()
+data2['UK - Signal based (incl. 4 phases)']
+
+root3 = "bootstrap.p"
+with open(root3, 'rb') as f:
+    data3 = pickle.load(f)
+
+
+
 def Get_Result_Table (data_pick):
     country_name = ['JAPAN', 'US', 'UK', 'GERMANY', 'FRANCE', 'BRAZIL', 'MEXICO']
     key_name = [(i + ' - Signal based (incl. 4 phases)') for i in country_name]

@@ -34,7 +34,7 @@ SingleInput_2phase = ggplot(SingleInput_2Phases, aes(as.Date(Date, format = "%Y-
   scale_x_date(labels = date_format("%m-%Y")) + 
   labs(x = "Month") +
   theme_bw() +
-  scale_color_manual(values=c("red", "blue"))
+  scale_color_manual(values = c("expansion" = "blue", "contraction" = "red"))
 
 ggsave("output_jpg/visualization_phase//SingleInput_2phase.png")
 
@@ -44,7 +44,8 @@ SingleInput_4phase = ggplot(SingleInput_4Phases, aes(as.Date(Date, format = "%Y-
   scale_x_date(labels = date_format("%m-%Y")) + 
   labs(x = "Month") +
   theme_bw() +
-  scale_color_manual(values=c("red", "blue", "green", "black"))
+  scale_color_manual(values = c("expansion" = "blue", "contraction" = "red", "recovery" = "yellow2",
+                                "slowdown" = "black"))
 
 ggsave("output_jpg/visualization_phase//SingleInput_4phase.png")
 
@@ -55,7 +56,8 @@ SingleInput_6phase = ggplot(SingleInput_6Phases, aes(as.Date(Date, format = "%Y-
   scale_x_date(labels = date_format("%m-%Y")) + 
   labs(x = "Month") +
   theme_bw() +
-  scale_color_manual(values=c("red", "blue", "green", "black", "pink", "yellow"))
+  scale_color_manual(values = c("expansion" = "blue", "contraction" = "red", "recovery" = "yellow2",
+                                "slowdown" = "black", "re-acceleration" = "pink","double_dip" = "darkcyan"))
 
 ggsave("output_jpg/visualization_phase//SingleInput_6phase.png")
 #Multiple inputs
@@ -65,7 +67,8 @@ MultipleInput_2phase = ggplot(MultipleInput_2Phases, aes(as.Date(Date, format = 
   scale_x_date(labels = date_format("%m-%Y")) + 
   labs(x = "Month")+
   theme_bw() +
-  scale_color_manual(values=c("red", "blue"))
+  scale_color_manual(values=c("red", "blue")) +
+  scale_color_manual(values = c("expansion" = "blue", "contraction" = "red"))
 
 ggsave("output_jpg/visualization_phase//MultipleInput_2phase.png")
 
@@ -75,7 +78,8 @@ MultipleInput_4phase = ggplot(MultipleInput_4Phases, aes(as.Date(Date, format = 
   scale_x_date(labels = date_format("%m-%Y")) + 
   labs(x = "Month") +
   theme_bw() +
-  scale_color_manual(values=c("red", "blue", "green", "black"))
+  scale_color_manual(values = c("expansion" = "blue", "contraction" = "red", "recovery" = "yellow2",
+                                "slowdown" = "black"))
 
 ggsave("output_jpg/visualization_phase//MultipleInput_4phase.png")
 
@@ -85,6 +89,10 @@ MultipleInput_6phase = ggplot(MultipleInput_6Phases, aes(as.Date(Date, format = 
   scale_x_date(labels = date_format("%m-%Y")) + 
   labs(x = "Month") +
   theme_bw() +
-  scale_color_manual(values=c("red", "blue", "black", "pink", "blue", "yellow"))
+  scale_color_manual(values = c("expansion" = "blue", "contraction" = "red", "recovery" = "yellow2",
+                                "slowdown" = "black", "re-acceleration" = "pink","double_dip" = "darkcyan"))
 
 ggsave("output_jpg/visualization_phase//MultipleInput_6phase.png")
+
+all_phase_figure =
+  multiplot(SingleInput_4phase, SingleInput_6phase, MultipleInput_4phase, MultipleInput_6phase, cols = 2)
