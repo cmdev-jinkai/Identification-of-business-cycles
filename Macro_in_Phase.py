@@ -221,8 +221,8 @@ data_inflation= Quantile_Phase_INFLATION (data_new)
 data_new = Reform_Data_Macro (data_all, data_old)
 
 
-def Get_Univariate_Comparison (data_gdp, data_inflation):
-    country_name = ['JAPAN', 'US', 'UK', 'GERMANY', 'FRANCE', 'BRAZIL', 'MEXICO']
+def Get_Univariate_Comparison (data_gdp, data_inflation, month):
+    country_name = ['US', 'UK', 'GERMANY', 'FRANCE', 'BRAZIL', 'MEXICO']
     key_name = [(i + ' - Macro based') for i in country_name]
     country_column = []
     phase_gdp = []
@@ -237,7 +237,7 @@ def Get_Univariate_Comparison (data_gdp, data_inflation):
         df_inflation = data_inflation[key_name[i]]
         phase_gdp_list = list(df_gdp.sort_values(by=['order'])['phase'].drop_duplicates())
         phase_inflation_list = list(df_inflation.sort_values(by=['order'])['phase'].drop_duplicates())
-        results_all = Link_Phase_Bootstrap(df_gdp, 12)
+        results_all = Link_Phase_Bootstrap(df_gdp, month)
         for j in range(len(phase_gdp_list)):
             current_phase = phase_gdp_list[j]
             country_column.append(country_name[i])
@@ -249,15 +249,15 @@ def Get_Univariate_Comparison (data_gdp, data_inflation):
             std_column_gdp.append(current_std)
             print([i, j])
             print(current_mean)
-        results_all = Link_Phase_Bootstrap(df_inflation, 12)
+        results_all = Link_Phase_Bootstrap(df_inflation, month)
         for j in range(len(phase_inflation_list)):
             current_phase = phase_inflation_list[j]
             phase_inflation.append(current_phase)
             result_phase = results_all[current_phase]
             current_mean = result_phase['Mean(%)']
             current_std = result_phase['Standard Deviation(%)']
-            mean_column_gdp.append(current_mean)
-            std_column_gdp.append(current_std)
+            mean_column_inflation.append(current_mean)
+            std_column_inflation.append(current_std)
             print([i, j])
             print(current_mean)
     output = pd.DataFrame({"Country":country_column, "phase_gdp":phase_gdp,
@@ -265,14 +265,34 @@ def Get_Univariate_Comparison (data_gdp, data_inflation):
                            'Mean_INFLATION':mean_column_inflation, 'Standard.Deviation_INFLATION':std_column_inflation})
     return output
 
-result_univariate = Get_Univariate_Comparison (data_gdp, data_inflation)
+result_one_year = Get_Univariate_Comparison (data_gdp, data_inflation, 12)
+result_two_year =  Get_Univariate_Comparison (data_gdp, data_inflation, 24)
 
+result_one_year.to_csv('output_macro_csv/result_one_year.csv')
+
+
+def Get_US(df):
+    country = ['US' for i in range(9)]
+    phase_list = list(df['phase'].drop_duplicates())
+    Return = []
+    results_all = Link_Phase_Bootstrap(df, 12)
+    for i in range(len(phase_list)):
+        current_phase = phase_list[i]
+        result_phase = results_all[current_phase]
+        current_mean = result_phase['Mean(%)']
+        Return.append(current_mean)
+    output = pd.DataFrame({"Country":country, "phase_list":phase_list,
+                           'Return':Return})
+    return output
+    
+trail = Get_US(data_new['US - Macro based'])
+trail.to_csv("3D_us.csv")
 np.quantile(data_new['US - Macro based'].APINFLATION, 3/7)
 data_new['US - Macro based'].columns
 
 Link_Phase_Bootstrap(data_new['US - Macro based'], 12)
 
-data_new['US - Macro based']
+data_new['BRAZIL - Macro based']
 np.isnan(a['JAPAN - Macro based'].RGDP[0])
 
 np.quantile(a['JAPAN - Macro based'].APRGDP, 1/3)

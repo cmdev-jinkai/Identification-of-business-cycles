@@ -1,0 +1,15 @@
+,Country,phase_gdp,GDP,phase_inflation,Inflation,Value
+1,UK, Below  1.4%,2.7844,Below  -2.0%,6.3026,Mean
+2,UK,1.4% to 2.5%,8.7266,-2.0% to 0.3%,2.9933,Mean
+3,UK,2.5% to 4.0%,2.4873,0.3% to 2.0%,7.4008,Mean
+4,UK,4.0% to 4.5%,-1.132,2.0% to 3.3%,4.2101,Mean
+5,UK,4.5% to 5.5%,8.8027,3.3% to 4.4%,5.8427,Mean
+6,UK,5.5% to 7.0%,3.9375,4.4% to 6.1%,5.111,Mean
+7,UK,Above 7.0%,7.4569,Above 6.1%,1.6679,Mean
+8,UK, Below  1.4%,0.137823844,Below  -2.0%,0.40729994,Sharp.Ratio
+9,UK,1.4% to 2.5%,0.710160967,-2.0% to 0.3%,0.223960555,Sharp.Ratio
+10,UK,2.5% to 4.0%,0.225040035,0.3% to 2.0%,0.576840038,Sharp.Ratio
+11,UK,4.0% to 4.5%,-0.062991425,2.0% to 3.3%,0.259916409,Sharp.Ratio
+12,UK,4.5% to 5.5%,0.682369266,3.3% to 4.4%,0.453509582,Sharp.Ratio
+13,UK,5.5% to 7.0%,0.28842773,4.4% to 6.1%,0.310304841,Sharp.Ratio
+14,UK,Above 7.0%,0.542103159,Above 6.1%,0.09811061,Sharp.Ratio

@@ -1,0 +1,15 @@
+Country,phase_gdp,GDP,phase_inflation,Inflation,Value
+MEXICO, Below -13.8%,4.8285, Below 0.7%,9.6456,Mean
+MEXICO,-13.8% to -5.6%,21.6721,0.7% to 2.9%,17.6634,Mean
+MEXICO,-5.6% to -1.6%,7.5977,2.9% to 4.6%,14.3523,Mean
+MEXICO,-1.6% to 6.1%,15.4552,4.6% to 6.1%,7.0378,Mean
+MEXICO,6.1% to 12.3%,12.8515,6.1% to 7.4%,9.0825,Mean
+MEXICO,12.3% to 16.3%,11.3196,7.4% to 10.5%,11.8307,Mean
+MEXICO,Above 16.3%,8.305,Above 10.5%,13.5856,Mean
+MEXICO, Below -13.8%,0.19269449, Below 0.7%,0.512189294,Sharp.Ratio
+MEXICO,-13.8% to -5.6%,1.047153584,0.7% to 2.9%,0.799918484,Sharp.Ratio
+MEXICO,-5.6% to -1.6%,0.374547695,2.9% to 4.6%,0.694902124,Sharp.Ratio
+MEXICO,-1.6% to 6.1%,0.643502808,4.6% to 6.1%,0.367282823,Sharp.Ratio
+MEXICO,6.1% to 12.3%,0.604474944,6.1% to 7.4%,0.419875736,Sharp.Ratio
+MEXICO,12.3% to 16.3%,0.808254195,7.4% to 10.5%,0.498878328,Sharp.Ratio
+MEXICO,Above 16.3%,0.355354927,Above 10.5%,0.530045648,Sharp.Ratio

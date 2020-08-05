@@ -1,0 +1,15 @@
+Country,phase_gdp,GDP,phase_inflation,Inflation,Value
+US, Below 0.5%,4.89, Below  0.0% ,10.69,Mean
+US,0.5% to 1.8%,12.62,0.0% to 1.1%,10.91,Mean
+US,1.8% to 2.3%,5.51,1.1% to 2.0%,14.6,Mean
+US,2.3% to 3.0%,2.48,2.0% to 2.6%,12.51,Mean
+US,3.0% to 3.5%,9.46,2.6% to 3.3%,8.75,Mean
+US,3.5% to 4.6%,17.12,3.3% to 4.8%,4.55,Mean
+US,Above 4.6%,12.24,Above 4.8%,3.5,Mean
+US, Below 0.5%,0.2, Below  0.0% ,0.65,Sharp.Ratio
+US,0.5% to 1.8%,0.89,0.0% to 1.1%,0.72,Sharp.Ratio
+US,1.8% to 2.3%,0.33,1.1% to 2.0%,1.14,Sharp.Ratio
+US,2.3% to 3.0%,0.13,2.0% to 2.6%,0.78,Sharp.Ratio
+US,3.0% to 3.5%,0.78,2.6% to 3.3%,0.51,Sharp.Ratio
+US,3.5% to 4.6%,1.48,3.3% to 4.8%,0.23,Sharp.Ratio
+US,Above 4.6%,0.98,Above 4.8%,0.21,Sharp.Ratio
