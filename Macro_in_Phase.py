@@ -17,8 +17,6 @@ from Linkage_BB_Phase import Link_Phase_Bootstrap
 from collections import Counter
 import numpy as np
 import datetime
-from scipy.stats import norm
-from scipy.stats.mstats import gmean
 
 
 root_all = r"C:\Users\cmdev\Desktop\ds_raw_data\data_dict_m.pickle"
@@ -26,22 +24,12 @@ root_all = r"C:\Users\cmdev\Desktop\ds_raw_data\data_dict_m.pickle"
 with open(root_all, 'rb') as f: 
     data_all = pickle.load(f)
 
-data_all.keys()
-
-data_all['BRAZIL Real GDP']
-
-data_all['{} Consumer Prices'.format('US')]
-
-data_all['{} Real GDP'.format("CHINA")].keys()
 
 root_old = r"C:\Users\cmdev\Desktop\ds_raw_data\timeseries.p"
     
 with open(root_old, 'rb') as f:
     data_old = pickle.load(f)
 
-data_old.keys()
-data_old['UK - Signal based (incl. 4 phases)']
-data_old['UK - Wavelets (incl. 4 phases)'].head(10)
 
 
 def Annual_Percentage_GDP(df):
@@ -266,10 +254,8 @@ def Get_Univariate_Comparison (data_gdp, data_inflation, month):
     return output
 
 result_one_year = Get_Univariate_Comparison (data_gdp, data_inflation, 12)
-result_two_year =  Get_Univariate_Comparison (data_gdp, data_inflation, 24)
 
 result_one_year.to_csv('output_macro_csv/result_one_year.csv')
-
 
 def Get_US(df):
     country = ['US' for i in range(9)]
@@ -285,29 +271,9 @@ def Get_US(df):
                            'Return':Return})
     return output
     
-trail = Get_US(data_new['US - Macro based'])
-trail.to_csv("3D_us.csv")
-np.quantile(data_new['US - Macro based'].APINFLATION, 3/7)
-data_new['US - Macro based'].columns
+trail_US = Get_US(data_new['US - Macro based'])
+trail_US.to_csv("3D_us.csv")
 
-Link_Phase_Bootstrap(data_new['US - Macro based'], 12)
-
-data_new['BRAZIL - Macro based']
-np.isnan(a['JAPAN - Macro based'].RGDP[0])
-
-np.quantile(a['JAPAN - Macro based'].APRGDP, 1/3)
-
-a = data_all['BRAZIL Real GDP']
-a.Return[1]
-a.keys()
-list(a.values())
-
-data_inflation['US - Macro based'].sort_values(by=['order'])
-list(data_inflation['US - Macro based'].sort_values(by=['order'])['phase'].drop_duplicates())
-
-
-b = pd.DataFrame({"Date" : list(a.keys()), "RGDP":list(a.values())})
-Annual_Percentage_GDP(b)
 
 
 
