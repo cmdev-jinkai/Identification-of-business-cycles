@@ -274,7 +274,8 @@ def Get_US(df):
 trail_US = Get_US(data_new['US - Macro based'])
 trail_US.to_csv("3D_us.csv")
 
-
+with open('data_new.pickle', 'wb') as handle:
+    pickle.dump(data_new, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 
 
