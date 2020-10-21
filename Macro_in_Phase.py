@@ -24,6 +24,8 @@ root_all = r"C:\Users\cmdev\Desktop\ds_raw_data\data_dict_m.pickle"
 with open(root_all, 'rb') as f: 
     data_all = pickle.load(f)
 
+data_all.keys()
+data_all["US Real GDP"]
 
 root_old = r"C:\Users\cmdev\Desktop\ds_raw_data\timeseries.p"
     
@@ -272,6 +274,9 @@ def Get_US(df):
     return output
     
 trail_US = Get_US(data_new['US - Macro based'])
+data_old['US - Signal based (incl. 4 phases)']
+
+
 trail_US.to_csv("3D_us.csv")
 
 with open('data_new.pickle', 'wb') as handle:

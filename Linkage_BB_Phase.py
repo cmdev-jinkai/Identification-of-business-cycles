@@ -302,7 +302,7 @@ def Link_Phase_Bootstrap(df, periods_month, method = 'NED', condidence_interval 
     for i in range(len(list_phases)):
         if len(return_phases[list_phases[i]]) >= 30:
             output[list_phases[i]] = bootstrap(return_phases[list_phases[i]], periods_month, method = method, condidence_interval = condidence_interval)
-        elif len(return_phases[list_phases[i]]) < 30 and len(return_phases[list_phases[i]]) >= 15:
+        elif len(return_phases[list_phases[i]]) < 30 and len(return_phases[list_phases[i]]) >= 5:
             print('Warning: There are ' + str(len(return_phases[list_phases[i]])) + ' historical cumulative returns for bootstrap in phase of ' + list_phases[i] + '. Please check the robustness manually.')
             output[list_phases[i]] = bootstrap(return_phases[list_phases[i]], periods_month, method = method, condidence_interval = condidence_interval)
         else:
