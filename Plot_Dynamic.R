@@ -34,3 +34,34 @@ setwd("output_jpg//visualization_dynamic_bubble")
 
 animate(dynamic_bubble, duration = 10, fps = 20,  renderer = gifski_renderer())
 anim_save( "dynamic_bubble.gif")
+
+returns_panel_add = subset(returns_panel, returns_panel$Year == 3)
+
+figure_add =   
+  
+  ggplot(returns_panel_add, aes(y = Mean, x = Standard.Deviation)) + 
+  geom_point(aes(color = Country,  size = Sharp.Ratio), alpha = 2) +
+  labs( title = "Latest M/T Return Estimate over 3-Years Horizon") +
+  ylab("Nonimal Annualized Return (%)") +
+  xlab("Annulised Volatility (%)") +
+  scale_color_manual(values = c("BRAZIL" = "yellow", "FRANCE" = "pink", "GERMANY" = "orange",
+                                "JAPAN" = "black", "MEXICO" = "green", "UK" = "blue", "US" = "red")) +
+  scale_size(range = c(5, 15)) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(color = "black", size = 12,face = "bold"),
+    plot.subtitle = element_text(color = "blue", face = "bold"),
+  ) +
+  theme(legend.position="bottom")+
+  theme(
+    plot.title = element_text(hjust = 0.5)
+  ) 
+
+
+write.csv(returns_panel_add, "Estimation_Latest.csv")
+
+
+
+
+
+

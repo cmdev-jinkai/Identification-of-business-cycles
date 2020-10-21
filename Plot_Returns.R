@@ -11,7 +11,7 @@ library(ggplot2)
 return_us = read.csv('output_csv/visualization_return_us.csv')
 
 #plot RS method
-rs_us = subset(return_us, substring(return_us$Method, 1, 2) == 'RS')
+rs_us = subset(return_us, substring(return_us$Method, 1, 2) == 'Si')
 
 Name_Reform_rs = function(x){
   for (i in 1:length(x[,1])){
@@ -20,6 +20,7 @@ Name_Reform_rs = function(x){
   x$Mean = x$Mean * 100
   return (x)
 }
+
 
 rs_us = Name_Reform_rs(rs_us)
 
@@ -49,17 +50,58 @@ Name_Reform_zscore = function(x){
 
 zscore_us = Name_Reform_zscore(zscore_us)
 
+zscore_us = subset(zscore_us, Method != " 6 phases")
 
-zscore_us_return = 
+write.csv(zscore_us, 'Signal_US_Return_Phase.csv')
+
+zscore_us_four = subset(zscore_us, Method == " 4 phases")
+zscore_us_two = subset(zscore_us, Method == " 2 phases")
+
+zscore_us_return_four = 
+  ggplot(zscore_us_four, aes(x = Phase, y = Mean)) + 
+  geom_bar(position="dodge", stat="identity",color="#56B4E9", width = 0.55) +
+  #labs(title = "Estimated Returns in Different Phases Using Z-Score Transforms of Signal") +
+  #xlab("Number of Phases in Total") +
+  ylab("Mean of Annualized Return (%)") +
+  theme_bw() +
+  theme(axis.text=element_text(size=12), axis.title=element_text(size=12)) +
+  theme(legend.text=element_text(size=12)) +
+  theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank())
+
+
+
+#+
+  #theme(legend.position="bottom")# +
+  #scale_y_continuous(limits = c(min(zscore_us$Mean), max(zscore_us$Mean)), breaks=c(0:max(zscore_us$Mean))) +
+  #scale_fill_manual("Phase", values = c("contraction" = "red", "expansion" = "blue", 
+                                        # "recovery" = "grey", "slowdown" = "green"))
+
+zscore_us_return_two = 
+  ggplot(zscore_us_two, aes(x = Phase, y = Mean)) + 
+  geom_bar(position="dodge", stat="identity",color="#56B4E9",width = 0.45) +
+  #labs(title = "Estimated Returns in Different Phases Using Z-Score Transforms of Signal") +
+  #xlab("Number of Phases in Total") +
+  ylab("Mean of Annualized Return (%)") +
+  theme_bw() +
+  theme(axis.text=element_text(size=12), axis.title=element_text(size=12)) +
+  theme(legend.text=element_text(size=12)) +
+  theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank())
+
+
+#+
+
+zscore_us_return_two = 
   ggplot(zscore_us, aes(fill = Phase, y = Mean, x = Method)) + 
   geom_bar(position="dodge", stat="identity") +
-  labs(title = "Estimated Returns in Different Phases Using Z-Score Transforms of Signal") +
-  xlab("Number of Phases in Total") +
+  #labs(title = "Estimated Returns in Different Phases Using Z-Score Transforms of Signal") +
+  #xlab("Number of Phases in Total") +
   ylab("Mean of Annualized Return (%)") +
-  scale_y_continuous(limits = c(min(zscore_us$Mean), max(zscore_us$Mean)), breaks=c(0:max(zscore_us$Mean))) +
-  scale_fill_manual("Phases", values = c("contraction" = "yellow", "expansion" = "blue", "re-acceleration" = "orange",
-                                         "recovery" = "black", "slowdown" = "green")) +
-  theme_bw()
+  theme_bw() +
+  theme(legend.position="bottom") +
+  #scale_y_continuous(limits = c(min(zscore_us$Mean), max(zscore_us$Mean)), breaks=c(0:max(zscore_us$Mean))) +
+  scale_fill_manual("Phase", values = c("contraction" = "red", "expansion" = "blue", 
+                                        "recovery" = "grey", "slowdown" = "green"))
+
 
 ggsave("output_jpg/visualization_methods_us//zscore_us_return.png")
 

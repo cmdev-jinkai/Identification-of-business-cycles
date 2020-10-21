@@ -1,0 +1,7 @@
+Country,Method,Mean,Standard.Deviation,Phase
+US,Signal based (incl. 4 phases),0.1139,0.0841,expansion
+US,Signal based (incl. 4 phases),0.106,0.0929,slowdown
+US,Signal based (incl. 4 phases),0.0412,0.1116,contraction
+US,Signal based (incl. 4 phases),0.0699,0.0971,recovery
+US,Signal based (incl. 2 phases),0.1095,0.0891,expansion
+US,Signal based (incl. 2 phases),0.0579,0.1051,contraction

@@ -33,10 +33,10 @@ return_phase_slowdown = subset(return_phase_four, Phase == 'slowdown')
 expansion_figure =
   ggplot(return_phase_expansion, aes(y = Mean, x = Standard.Deviation)) + 
   geom_point(aes(color = Country, size = Sharp.Ratio), alpha = 0.5) +
-  labs(title = "Annualised Return Estimation in Four Phases",
+  labs( x="", y="",
        subtitle = "Expansion Phase") +
-  ylab("Mean of Annualized Return (%)") +
-  xlab("Standard Deviation (%)") +
+  #ylab("Mean of Annualized Return (%)") +
+  #xlab("Standard Deviation (%)") +
   scale_color_manual(values = c("BRAZIL" = "yellow", "FRANCE" = "pink", "GERMANY" = "orange",
                                 "JAPAN" = "black", "MEXICO" = "green", "UK" = "blue", "US" = "red")) +
   scale_size(range = c(5, 15)) +
@@ -47,17 +47,17 @@ expansion_figure =
   ) +
   theme(
     plot.subtitle = element_text(hjust = 0.5)
-  )
+  ) 
 
 ggsave("output_jpg/visualization_bubble//expansion_figure.png")
 
 slowdown_figure =
   ggplot(return_phase_slowdown, aes(y = Mean, x = Standard.Deviation)) + 
   geom_point(aes(color = Country, size = Sharp.Ratio), alpha = 0.5) +
-  labs(title = "Annualised Return Estimation in Four Phases",
+  labs(x="", y="",
        subtitle = "Slowdown Phase") +
-  ylab("Mean of Annualized Return (%)") +
-  xlab("Standard Deviation (%)") +
+  #ylab("Mean of Annualized Return (%)") +
+  #xlab("Standard Deviation (%)") +
   scale_color_manual(values = c("BRAZIL" = "yellow", "FRANCE" = "pink", "GERMANY" = "orange",
                                 "JAPAN" = "black", "MEXICO" = "green", "UK" = "blue", "US" = "red")) +
   scale_size(range = c(5, 15)) +
@@ -68,28 +68,27 @@ slowdown_figure =
   ) +
   theme(
     plot.subtitle = element_text(hjust = 0.5)
-  )
-
+  ) 
 ggsave("output_jpg/visualization_bubble//slowdown_figure.png")
 
 contraction_figure =
   ggplot(return_phase_contraction, aes(y = Mean, x = Standard.Deviation)) + 
   geom_point(aes(color = Country, size = Sharp.Ratio), alpha = 0.5) +
-  labs(title = "Annualised Return Estimation in Four Phases",
+  labs(x="", y="",
        subtitle = "Contraction Phase") +
-  ylab("Mean of Annualized Return (%)") +
-  xlab("Standard Deviation (%)") +
+  #ylab("Mean of Annualized Return (%)") +
+  #xlab("Standard Deviation (%)") +
   scale_color_manual(values = c("BRAZIL" = "yellow", "FRANCE" = "pink", "GERMANY" = "orange",
                                 "JAPAN" = "black", "MEXICO" = "green", "UK" = "blue", "US" = "red")) +
   scale_size(range = c(5, 15)) +
   theme_bw() +
   theme(
-    plot.title = element_text(color = "black", size = 12),
+    #plot.title = element_text(color = "black", size = 12),
     plot.subtitle = element_text(color = "blue", face = "bold"),
   ) +
   theme(
     plot.subtitle = element_text(hjust = 0.5)
-  )
+  ) 
 
 ggsave("output_jpg/visualization_bubble//contraction_figure.png")
 
@@ -97,21 +96,21 @@ ggsave("output_jpg/visualization_bubble//contraction_figure.png")
 recovery_figure =
   ggplot(return_phase_recovery, aes(y = Mean, x = Standard.Deviation)) + 
   geom_point(aes(color = Country, size = Sharp.Ratio), alpha = 0.5) +
-  labs(title = "Annualised Return Estimation in Four Phases",
+  labs(x="", y="",
        subtitle = "Recovery Phase") +
-  ylab("Mean of Annualized Return (%)") +
-  xlab("Standard Deviation (%)") +
+  #ylab("Mean of Annualized Return (%)") +
+  #xlab("Standard Deviation (%)") +
   scale_color_manual(values = c("BRAZIL" = "yellow", "FRANCE" = "pink", "GERMANY" = "orange",
                                 "JAPAN" = "black", "MEXICO" = "green", "UK" = "blue", "US" = "red")) +
   scale_size(range = c(5, 15)) +
   theme_bw() +
   theme(
-    plot.title = element_text(color = "black", size = 12),
+    #plot.title = element_text(color = "black", size = 12),
     plot.subtitle = element_text(color = "blue", face = "bold"),
   ) +
   theme(
     plot.subtitle = element_text(hjust = 0.5)
-  )
+  ) 
 
 
 all_phase_figure =
