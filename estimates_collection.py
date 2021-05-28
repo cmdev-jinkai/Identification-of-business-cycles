@@ -263,6 +263,7 @@ def get_Data_Signal (signal_data):
             output[country].columns = ['LI', 'BS', 'UR', 'CS']
             # Unemployment rate is an inverse indicator and need to be multiplied by -1
             output[country]['UR'] = -1 * output[country]['UR']
+            output[country] = output[country][(output[country].index).day == 15]
             Z_Composite = []
             for i in range(len(output[country])):
                 current_row = output[country].iloc[i, :].dropna()
